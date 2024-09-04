@@ -10,135 +10,84 @@
     .nav {
       width: 100%;
       font-size: $fs-sm;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      justify-items: center;
+      display: flex;
+      justify-content: center;
       align-items: center;
       padding: 20px;
       position: relative;
-      text-transform: uppercase;
-
-      .nav-logo {
-        grid-column: 1/2;
-        justify-self: flex-start;
-      }
-
-      .based {
-        grid-column: 2/3;
-        text-transform: uppercase;
-        font-size: $fs-sm;
-      }
 
       .links-container {
-        grid-column: 3/4;
-        justify-self: flex-end;
         display: flex;
-        gap: 10px;
-        border-radius: 20px;
+        align-items: center;
+        gap: 60px;
         position: relative;
-
-        .nav-item {
-          position: relative;
-          padding: 5px 10px;
-          cursor: pointer;
-        }
-
-        .nav-item:hover {
-          opacity: 0.5;
-        }
+        border-bottom: solid 1px black;
 
         .background {
-          position: relative;
-
-          .nav-text {
-            position: relative;
-            z-index: 1;
-            color: $primary-color;
-          }
-        }
-
-        .background::before {
-          content: "";
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
-          background-color: $matching-color3;
-          border-radius: 20px;
+          background-color: black;
+          border-radius: 5px;
+          z-index: -1;
         }
-
-        .text {
+        .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 5px 10px;
           cursor: pointer;
-          text-decoration: none;
-          line-height: calc(1em * 1.3);
-          color: $secondary-color;
-          height: calc(1em * 1.1);
-          overflow: hidden;
-        }
+          position: relative;
+          text-transform: uppercase;
 
-        .text:hover .letter {
-          transform: translateY(-100%);
-        }
+          &.active {
+            color: white;
+          }
 
-        .text .block:last-child {
-          color: $secondary-color;
-        }
+          .rotate-active {
+            transform: 0;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+          }
 
-        .text .letter {
-          display: inline-block;
-          transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
-        }
+          .rotate {
+            transform: rotate(-90deg);
+            transition: transform 0.5s ease;
+            cursor: pointer;
+          }
 
-        .letter:nth-child(1) {
-          transition-delay: 0s;
-        }
+          /* Style du menu déroulant */
+          .dropdown-menu {
+            padding-top: 20px;
+            position: absolute;
+            top: 90%;
+            left: 0;
+            background-color: black;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
 
-        .letter:nth-child(2) {
-          transition-delay: 0.03s;
-        }
+            .dropdown-item {
+              padding: 10px 15px;
+              color: white;
+              text-align: left;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+              text-align: center;
 
-        .letter:nth-child(3) {
-          transition-delay: 0.06s;
-        }
-
-        .letter:nth-child(4) {
-          transition-delay: 0.09s;
-        }
-
-        .letter:nth-child(5) {
-          transition-delay: 0.12s;
-        }
-
-        .letter:nth-child(6) {
-          transition-delay: 0.15s;
-        }
-
-        .letter:nth-child(7) {
-          transition-delay: 0.18s;
-        }
-
-        .letter:nth-child(8) {
-          transition-delay: 0.21s;
-        }
-
-        .letter:nth-child(9) {
-          transition-delay: 0.24s;
-        }
-
-        .letter:nth-child(10) {
-          transition-delay: 0.27s;
-        }
-
-        .letter:nth-child(11) {
-          transition-delay: 0.3s;
-        }
-
-        .letter:nth-child(12) {
-          transition-delay: 0.33s;
+              &:hover {
+                background-color: #444;
+              }
+            }
+          }
         }
       }
+
       a {
         text-decoration: none;
         color: $secondary-color;

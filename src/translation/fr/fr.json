@@ -1,8 +1,11 @@
 {
   "nav": {
-    "home": "Accueil",
+    "home": "Home",
     "galleries": "Galerie",
-    "projects": "Projets",
+    "tirages": "Tirages",
+    "originaux": "Originaux",
+    "grandsFormats": "Grands formats",
+    "moyensFormats": "Moyens formats",
     "about": "Infos",
     "contact": "Contact"
   },

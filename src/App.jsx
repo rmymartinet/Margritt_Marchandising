@@ -14,6 +14,10 @@ import Gallery from "./pages/Galleries/Galleries.jsx";
 import OriginauxDetails from "./pages/Galleries/OriginauxDetails/OriginauxDetails.jsx";
 import TirageDetails from "./pages/Galleries/TiragesDetails/TiragesDetails.jsx";
 import Home from "./pages/Home/Home.jsx";
+import OriginauxGrands from "./pages/Originaux/OrginauxGrand.jsx";
+import OriginauxMoyens from "./pages/Originaux/OriginauxMoyen.jsx";
+import TiragesGrands from "./pages/Tirages/TiragesGrands.jsx";
+import TiragesMoyens from "./pages/Tirages/TiragesMoyens.jsx";
 import useCountStore from "./store/useCountStore.jsx";
 
 function App() {
@@ -119,6 +123,22 @@ function App() {
               element={<Gallery data-scroll />}
             />
             <Route
+              path={`/${t("nav.originauxGrands")}`}
+              element={<OriginauxGrands data-scroll />}
+            />
+            <Route
+              path={`/${t("nav.originauxMoyens")}`}
+              element={<OriginauxMoyens data-scroll />}
+            />
+            <Route
+              path={`/${t("nav.tiragesMoyens")}`}
+              element={<TiragesGrands data-scroll />}
+            />
+            <Route
+              path={`/${t("nav.tiragesGrands")}`}
+              element={<TiragesMoyens data-scroll />}
+            />
+            <Route
               path={`/${t("nav.about")}`}
               element={<About data-scroll />}
             />
@@ -126,6 +146,7 @@ function App() {
               path={`/${t("nav.contact")}`}
               element={<Contact data-scroll />}
             />
+
             <Route
               path="/tirages/:index"
               element={<TirageDetails data-scroll />}
