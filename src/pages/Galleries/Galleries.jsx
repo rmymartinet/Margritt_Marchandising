@@ -1,68 +1,41 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { IoIosResize } from "react-icons/io";
 import { Transition } from "../../components/Animations/PageTransition/Transition.jsx";
-import { TextTransition } from "../../components/Animations/TextAnimation.jsx";
-import Circle from "../../components/Common/Circle.jsx";
 import Hero from "../../components/Common/Hero/Hero.jsx";
-import Form from "../../components/Form/Form.jsx";
-import FilterControl from "../../components/Galleries/FilterControl.jsx";
 import ImagesContainer from "../../components/Galleries/ImagesContainer.jsx";
-import { galleriesData } from "../../data/data";
-import "../Galleries/Galleries.scss";
-import Description from "../../components/Galleries/Description.jsx";
+import HeroSubContent from "../../components/Hero/HeroSubContent.jsx";
+import TextContentLinks from "../../components/SocialMedia/TextContentLinks.jsx";
 
-const TEXT_ORIGINALS = "galleries.textOriginals1";
-const TEXT_PRINTS = "galleries.textPrints1";
+import { originauxData } from "../../data/data.js";
+import "../Galleries/Galleries.scss";
 
 const Gallery = () => {
   const refContainer = useRef(null);
-  const [originaux, tirages] = galleriesData;
-  const [item, setItem] = useState([...originaux, ...tirages]);
-  const [isGridClick, setIsGridClick] = useState(false);
-  const [isButtonFilterIsClicked, setIsButtonFilterIsClicked] = useState("all");
-
-  /**
-   * !TODO : Changer l'orthographe de galerie en fr et eng
-   */
+  const extraLargeItem = originauxData.filter(
+    (item) => item.dimension === "extra-large"
+  );
 
   return (
     <Transition>
       <motion.section ref={refContainer} className="tirage-container">
         <Hero title="Galerie" className="hero-subtitle" />
-        <div className="description-grid">
-          <TextTransition textClassName="text-originaux" />
-          <Description
-            className="text-originaux"
-            title="Originaux"
-            text1={TEXT_ORIGINALS}
-          />
-          <TextTransition textClassName="text-tirages" />
-          <Description
-            className="text-tirages"
-            title="Tirages"
-            text1={TEXT_PRINTS}
-          />
-        </div>
-        <FilterControl
-          setItem={setItem}
-          isGridClick={isGridClick}
-          setIsGridClick={setIsGridClick}
-          isButtonFilterIsClicked={isButtonFilterIsClicked}
-          setIsButtonFilterIsClicked={setIsButtonFilterIsClicked}
-        />
-        <div className="images-container">
-          <ImagesContainer
-            isGridClick={isGridClick}
-            item={item}
-            refContainer={refContainer}
-            isButtonFilterIsClicked={isButtonFilterIsClicked}
-          />
-        </div>
+        <HeroSubContent>
+          <div className="content-left">
+            <span>Indisponible à la vente</span>
+            <div className="format">
+              <div className="icon">
+                <IoIosResize />
+              </div>
+              <p>Taille supérieure à 2 mètres</p>
+            </div>
+          </div>
+          <div className="content-right">
+            <TextContentLinks text="Vous retrouverez ici des oeuvres extra-large et projects sur lesquels je suis entrain de travailler. Si vous voulez suivre l'avancement des mes projets retrouvez moi sur" />
+          </div>
+        </HeroSubContent>
+        <ImagesContainer item={extraLargeItem} refContainer={refContainer} />
       </motion.section>
-      <footer className="hello">
-        <Circle target={"tirage-container"} />
-        <Form />
-      </footer>
     </Transition>
   );
 };

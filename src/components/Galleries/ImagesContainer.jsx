@@ -1,4 +1,3 @@
-import { useGSAP } from "@gsap/react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
@@ -12,10 +11,6 @@ gsap.registerPlugin(Flip);
 const ImagesContainer = ({
   //eslint-disable-next-line
   item,
-  //eslint-disable-next-line
-  isGridClick,
-  //eslint-disable-next-line
-  isButtonFilterIsClicked,
 }) => {
   let navigate = useNavigate();
   const imgContainerRef = useRef(null);
@@ -25,42 +20,8 @@ const ImagesContainer = ({
     if (subCategory === "tirages") navigate(`/tirages/${id}`);
   };
 
-  const animateGridButton = () => {
-    if (isGridClick) {
-      const gridButton = imgContainerRef.current;
-      const items = gsap.utils.toArray("img");
-      const state = Flip.getState(items);
-      gridButton.classList.toggle("insert");
-
-      Flip.from(state, {
-        duration: 1,
-        stagger: 0.04,
-        ease: "power3.inOut",
-      });
-    }
-  };
-  const animateButtonFilter = () => {
-    if (isButtonFilterIsClicked) {
-      gsap.from("img", {
-        clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-        duration: 1,
-        ease: "power3.inOut",
-      });
-      gsap.to("img", {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        duration: 1,
-        ease: "power3.inOut",
-      });
-    }
-  };
-
-  useGSAP(animateGridButton, { dependencies: [isGridClick] });
-  useGSAP(animateButtonFilter, { dependencies: [isButtonFilterIsClicked] });
-
   return (
     <motion.div className="grid-images-content" exit="exit">
-      <div className="flip-container"></div>
-      <div className="flip-container-width"></div>
       <div ref={imgContainerRef} className="img-gallery-container">
         {item.map((imgData, id) => {
           return (

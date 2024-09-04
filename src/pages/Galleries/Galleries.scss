@@ -11,32 +11,6 @@
     cursor: pointer;
   }
 
-  .flip-container {
-    position: fixed;
-    top: 0%;
-    right: 0%;
-    width: calc(40vw + 10px);
-    height: calc(40vh + 10px);
-    z-index: -1;
-  }
-
-  .flip-container-width {
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: 10vw;
-    height: 10vw;
-    justify-self: center;
-    z-index: -1;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-
   .hero {
     p {
       font-size: $fs-bigger;
@@ -51,120 +25,6 @@
     }
   }
 
-  .description-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    column-gap: calc(10vw + 1rem);
-    align-items: flex-start;
-    margin-bottom: calc(20vh + 2rem);
-    width: 100%;
-
-    .text-originaux,
-    .text-tirages {
-      display: flex;
-      flex-direction: column;
-      text-transform: uppercase;
-      font-size: $fs-md;
-      font-weight: 600;
-      overflow: hidden;
-
-      p {
-        font-size: $fs-base;
-        font-weight: 300;
-      }
-    }
-  }
-
-  .button-container {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 20vh;
-    padding: 0 calc(5vw + 1rem);
-    align-self: flex-start;
-    width: 100%;
-    justify-content: space-between;
-    background-color: $matching-color3;
-    padding: 30px;
-
-    .grid-button-container {
-      align-self: flex-start;
-      display: flex;
-      justify-items: center;
-      gap: 1em;
-      font-size: $fs-base;
-      cursor: pointer;
-      text-transform: uppercase;
-
-      .grid-button {
-        font-size: $fs-base;
-        cursor: pointer;
-        display: grid;
-        grid-template-rows: repeat(4, 1fr);
-        place-content: center;
-        align-items: center;
-        width: 50px;
-        height: 50px;
-        padding: 10px;
-        border: solid $primary-color 1px;
-        opacity: 0.7;
-
-        .first,
-        .second,
-        .third,
-        .fourth {
-          width: 5px;
-          height: 5px;
-          background-color: $primary-color;
-          opacity: 1;
-        }
-      }
-
-      .grid-button:hover {
-        border: solid $primary-color 1px;
-      }
-
-      .text-view {
-        font-size: $fs-sm;
-        font-weight: 300;
-        display: grid;
-        place-content: center;
-        overflow: hidden;
-        color: $primary-color;
-      }
-
-      .grid-button.insert {
-        display: grid;
-        grid-template-columns: repeat(2, 15px);
-        grid-template-rows: repeat(2, 15px);
-        place-content: center;
-        align-items: center;
-        justify-items: center;
-      }
-    }
-
-    .filter-container {
-      display: flex;
-      height: 100px;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1em;
-      color: $primary-color;
-
-      font-size: $fs-base;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: 500;
-
-      .filter-button {
-        font-weight: 400;
-        display: flex;
-        gap: 2em;
-        cursor: pointer;
-        font-size: $fs-sm;
-      }
-    }
-  }
-
   .grid-images-content {
     width: 100%;
     display: grid;
@@ -176,116 +36,35 @@
       flex-direction: column;
       align-items: center;
 
-      .grid-img8,
-      .grid-img13 {
-        .images-container {
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            aspect-ratio: 1/1;
-          }
-        }
-      }
-
-      .grid-img9 {
-        .images-container {
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-      }
-
-      @for $i from 0 through 13 {
-        .grid-img#{$i} {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          .images-container {
-            width: 100%;
-            height: 70%;
-          }
-
-          .image-content {
-            width: 95%;
-            padding: 60px 0px;
-            display: flex;
-
-            .content-left {
-              flex: 2;
-              font-size: $fs-base;
-              text-transform: uppercase;
-              font-weight: 500;
-            }
-
-            .content-right {
-              flex: 1;
-              display: flex;
-              align-items: flex-end;
-              flex-direction: column;
-
-              .image-date {
-                padding-bottom: 1em;
-                font-size: $fs-base;
-              }
-              .image-format {
-                opacity: 0.5;
-                font-size: $fs-sm;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .grid-images-content {
-    .img-gallery-container.insert {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      img {
+      .images-container {
         width: 100%;
-        height: 100%;
-        object-fit: contain;
-        aspect-ratio: 16/9;
+        height: 70%;
       }
+      .image-content {
+        width: 95%;
+        padding: 60px 0px;
+        display: flex;
 
-      @for $i from 0 through 11 {
-        .grid-img#{$i} {
+        .content-left {
+          flex: 2;
+          font-size: $fs-base;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+
+        .content-right {
+          flex: 1;
           display: flex;
+          align-items: flex-end;
           flex-direction: column;
-          align-items: center;
 
-          .image-content {
-            width: 75%;
-            font-size: 1em;
-            padding: 40px 0;
-            display: flex;
-
-            .content-left {
-              flex: 2;
-              font-size: $fs-base;
-            }
-
-            .content-right {
-              flex: 1.5;
-              display: flex;
-              align-items: flex-end;
-              flex-direction: column;
-
-              .image-date {
-                padding-bottom: 1em;
-                font-size: $fs-base;
-              }
-              .image-format {
-                opacity: 0.5;
-                font-size: $fs-sm;
-              }
-            }
+          .image-date {
+            padding-bottom: 1em;
+            font-size: $fs-base;
+          }
+          .image-format {
+            opacity: 0.5;
+            font-size: $fs-sm;
           }
         }
       }
@@ -295,20 +74,6 @@
 
 @media (max-width: 768px) {
   .tirage-container {
-    .flip-container-width {
-      position: fixed;
-      top: 0%;
-      width: 90%;
-      height: calc(40vh + 10px);
-      justify-self: center;
-      z-index: -1;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    }
     .hero {
       .hero-title {
         font-size: $fs-xxl;
@@ -328,17 +93,6 @@
       }
     }
 
-    .button-container {
-      padding: 0 calc(1vw + 0.5rem);
-      .filter-container {
-        .filter-button {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5em;
-        }
-      }
-    }
-
     .grid-images-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
@@ -348,23 +102,17 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(0fr, 1fr));
 
-        @for $i from 0 through 11 {
-          .grid-img#{$i} {
-            padding: 0;
+        .image-content {
+          width: 90%;
+          padding: 20px 30px;
+          display: flex;
+          justify-content: space-between;
 
-            .image-content {
-              width: 90%;
-              padding: 20px 30px;
-              display: flex;
-              justify-content: space-between;
-
-              .content-right {
-                justify-content: flex-end;
-                .image-format {
-                  opacity: 0.5;
-                  align-items: flex-end;
-                }
-              }
+          .content-right {
+            justify-content: flex-end;
+            .image-format {
+              opacity: 0.5;
+              align-items: flex-end;
             }
           }
         }
@@ -383,49 +131,25 @@
       }
     }
 
-    .button-container {
-      padding: 20px;
-      .grid-button-container {
-        .grid-button {
-          display: grid;
-          grid-template-rows: repeat(4, 7px);
-          width: 20px;
-          height: 20px;
-        }
-      }
-
-      .filter-container {
-        .filter-button {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5em;
-        }
-      }
-    }
-
     .grid-images-content {
       .img-gallery-container.insert {
-        @for $i from 0 through 11 {
-          .grid-img#{$i} {
-            .image-content {
-              width: 95%;
-              padding: 10px 15px;
+        .image-content {
+          width: 95%;
+          padding: 10px 15px;
 
-              .content-left {
-                flex: 1;
-                font-size: $fs-base;
-              }
+          .content-left {
+            flex: 1;
+            font-size: $fs-base;
+          }
 
-              .content-right {
-                flex: 1;
+          .content-right {
+            flex: 1;
 
-                .image-date {
-                  font-size: $fs-base;
-                }
-                .image-format {
-                  font-size: $fs-sm;
-                }
-              }
+            .image-date {
+              font-size: $fs-base;
+            }
+            .image-format {
+              font-size: $fs-sm;
             }
           }
         }
@@ -460,34 +184,31 @@
     .grid-images-content {
       .img-gallery-container.insert {
         gap: 1em 0;
-        @for $i from 0 through 11 {
-          .grid-img#{$i} {
-            .content-left {
+
+        .content-left {
+          font-size: $fs-very-base--mobile;
+        }
+
+        .image-content {
+          padding: 10px;
+          justify-content: center;
+          align-items: flex-start;
+          display: flex;
+          gap: 1em;
+          flex-direction: column;
+
+          .content-right {
+            width: 100%;
+
+            .image-date {
+              align-self: flex-start;
+              padding: 0;
               font-size: $fs-very-base--mobile;
             }
+            .image-format {
+              align-self: flex-start;
 
-            .image-content {
-              padding: 10px;
-              justify-content: center;
-              align-items: flex-start;
-              display: flex;
-              gap: 1em;
-              flex-direction: column;
-
-              .content-right {
-                width: 100%;
-
-                .image-date {
-                  align-self: flex-start;
-                  padding: 0;
-                  font-size: $fs-very-base--mobile;
-                }
-                .image-format {
-                  align-self: flex-start;
-
-                  font-size: $fs-very-sm--mobile;
-                }
-              }
+              font-size: $fs-very-sm--mobile;
             }
           }
         }
