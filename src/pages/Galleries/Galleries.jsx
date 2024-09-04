@@ -18,7 +18,7 @@ const Gallery = () => {
 
   return (
     <Transition>
-      <motion.section ref={refContainer} className="tirage-container">
+      <motion.section ref={refContainer} className="galerie-container">
         <Hero title="Galerie" className="hero-subtitle" />
         <HeroSubContent>
           <div className="content-left">

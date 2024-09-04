@@ -135,13 +135,13 @@ function App() {
               path={`/tirages/${t("nav.grandsFormats")
                 .toLocaleLowerCase()
                 .replace(/ /g, "-")}`}
-              element={<TiragesMoyens data-scroll />}
+              element={<TiragesGrands data-scroll />}
             />
             <Route
               path={`/tirages/${t("nav.moyensFormats")
                 .toLocaleLowerCase()
                 .replace(/ /g, "-")}`}
-              element={<TiragesGrands data-scroll />}
+              element={<TiragesMoyens data-scroll />}
             />
             <Route
               path={`/${t("nav.about")}`}

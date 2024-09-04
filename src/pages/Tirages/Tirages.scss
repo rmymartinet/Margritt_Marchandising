@@ -1,0 +1,37 @@
+@import "../../sass/mixins.scss";
+@import "../../sass/variables.scss";
+
+.button-container {
+  padding-top: 10px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  .buy-button {
+    padding: 5px 20px;
+    background-color: #0071e3;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    justify-self: center;
+    font-weight: 500;
+  }
+
+  .infos-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #0071e3;
+
+    .infos-button {
+      cursor: pointer;
+      justify-self: center;
+    }
+    .icon {
+      display: grid;
+      place-content: center;
+    }
+  }
+}

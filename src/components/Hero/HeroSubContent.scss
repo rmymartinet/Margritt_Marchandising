@@ -1,0 +1,37 @@
+@import "../../sass/mixins.scss";
+@import "../../sass/variables.scss";
+
+.sub-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  margin: 20px 0;
+  padding: 50px;
+  font-size: $fs-base;
+
+  .content-left {
+    font-size: $fs-base;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  .content-right {
+    padding: 4vw;
+  }
+
+  .format {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .icon {
+    display: grid;
+    border-radius: 50%;
+    padding: 5px;
+    place-content: center;
+    border: solid 1px black;
+  }
+}

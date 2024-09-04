@@ -1,7 +1,7 @@
 @import "../../sass/mixins.scss";
 @import "../../sass/variables.scss";
 
-.tirage-container {
+.galerie-container {
   @include parent-styles;
 
   img {
@@ -73,7 +73,7 @@
 }
 
 @media (max-width: 768px) {
-  .tirage-container {
+  .galerie-container {
     .hero {
       .hero-title {
         font-size: $fs-xxl;
@@ -122,7 +122,7 @@
 }
 
 @media (max-width: 498px) {
-  .tirage-container {
+  .galerie-container {
     .hero {
       margin-bottom: calc(10vh + 2rem);
 
@@ -159,7 +159,7 @@
 }
 
 @media (max-width: 380px) {
-  .tirage-container {
+  .galerie-container {
     .hero {
       .hero-title {
         font-size: $fs-xl;
