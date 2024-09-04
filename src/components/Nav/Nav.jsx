@@ -163,7 +163,7 @@ const Nav = () => {
                       <div
                         onClick={() =>
                           handleNavigate(
-                            `/${t("nav.grandsFormats")
+                            `/tirages/${t("nav.grandsFormats")
                               .toLowerCase()
                               .replace(/ /g, "-")}`
                           )
@@ -176,7 +176,7 @@ const Nav = () => {
                       <div
                         onClick={() =>
                           handleNavigate(
-                            `/${t("nav.moyensFormats")
+                            `/tirages/${t("nav.moyensFormats")
                               .toLowerCase()
                               .replace(/ /g, "-")}`
                           )
@@ -199,7 +199,7 @@ const Nav = () => {
                       <div
                         onClick={() =>
                           handleNavigate(
-                            `/${t("nav.grandsFormats")
+                            `/originaux/${t("nav.grandsFormats")
                               .toLowerCase()
                               .replace(/ /g, "-")}`
                           )
@@ -212,7 +212,7 @@ const Nav = () => {
                       <div
                         onClick={() =>
                           handleNavigate(
-                            `/${t("nav.moyensFormats")
+                            `/originaux/${t("nav.moyensFormats")
                               .toLowerCase()
                               .replace(/ /g, "-")}`
                           )

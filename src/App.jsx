@@ -1,24 +1,21 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { Route, Routes, useLocation } from "react-router-dom";
-import "./styles/locomotive.css";
-
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Landing from "./components/Loading/Landing.jsx";
 import NavBar from "./components/Nav/NavBar/NavBar.jsx";
 import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
 import Gallery from "./pages/Galleries/Galleries.jsx";
-import OriginauxDetails from "./pages/Galleries/OriginauxDetails/OriginauxDetails.jsx";
-import TirageDetails from "./pages/Galleries/TiragesDetails/TiragesDetails.jsx";
 import Home from "./pages/Home/Home.jsx";
 import OriginauxGrands from "./pages/Originaux/OrginauxGrand.jsx";
 import OriginauxMoyens from "./pages/Originaux/OriginauxMoyen.jsx";
 import TiragesGrands from "./pages/Tirages/TiragesGrands.jsx";
 import TiragesMoyens from "./pages/Tirages/TiragesMoyens.jsx";
 import useCountStore from "./store/useCountStore.jsx";
+import "./styles/locomotive.css";
 
 function App() {
   const { t } = useTranslation();
@@ -123,20 +120,28 @@ function App() {
               element={<Gallery data-scroll />}
             />
             <Route
-              path={`/${t("nav.originauxGrands")}`}
+              path={`/originaux/${t("nav.grandsFormats")
+                .toLocaleLowerCase()
+                .replace(/ /g, "-")}`}
               element={<OriginauxGrands data-scroll />}
             />
             <Route
-              path={`/${t("nav.originauxMoyens")}`}
+              path={`/originaux/${t("nav.moyensFormats")
+                .toLocaleLowerCase()
+                .replace(/ /g, "-")}`}
               element={<OriginauxMoyens data-scroll />}
             />
             <Route
-              path={`/${t("nav.tiragesMoyens")}`}
-              element={<TiragesGrands data-scroll />}
+              path={`/tirages/${t("nav.grandsFormats")
+                .toLocaleLowerCase()
+                .replace(/ /g, "-")}`}
+              element={<TiragesMoyens data-scroll />}
             />
             <Route
-              path={`/${t("nav.tiragesGrands")}`}
-              element={<TiragesMoyens data-scroll />}
+              path={`/tirages/${t("nav.moyensFormats")
+                .toLocaleLowerCase()
+                .replace(/ /g, "-")}`}
+              element={<TiragesGrands data-scroll />}
             />
             <Route
               path={`/${t("nav.about")}`}
@@ -145,15 +150,6 @@ function App() {
             <Route
               path={`/${t("nav.contact")}`}
               element={<Contact data-scroll />}
-            />
-
-            <Route
-              path="/tirages/:index"
-              element={<TirageDetails data-scroll />}
-            />
-            <Route
-              path="/originaux/:index"
-              element={<OriginauxDetails data-scroll />}
             />
           </Routes>
         </AnimatePresence>

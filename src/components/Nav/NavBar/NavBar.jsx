@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Logo from "../../Common/Logo/Logo.jsx";
 import useWindow from "../../Common/UseWindows.jsx";
 import MobileNav from "../MobileNav/MobileNav.jsx";
 import Nav from "../Nav.jsx";
@@ -23,9 +22,6 @@ const NavBar = () => {
     <>
       {isMobile && (
         <>
-          <div className="logo-mobile">
-            <Logo />
-          </div>
           <div className="header-mobile">
             <div
               onClick={handleActive}
