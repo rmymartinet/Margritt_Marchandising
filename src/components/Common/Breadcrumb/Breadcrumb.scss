@@ -1,0 +1,16 @@
+@import "../../../sass/variables.scss";
+@import "../../../sass/mixins.scss";
+
+.breadcrumb {
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 5vh;
+  padding-bottom: 0.5em;
+  font-size: $fs-very-base--mobile;
+  border-bottom: solid 1px #d8d8d8;
+
+  .breadcrumb-item {
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+}

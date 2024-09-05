@@ -9,11 +9,12 @@ import "./Originaux.scss";
 
 const OriginauxGrands = () => {
   const originaux = originauxData.filter((item) => {
-    return item.dimension === "large";
+    return item.dimension === "grands-formats";
   });
 
   let navigate = useNavigate();
-  const handleNavigate = (id, size) => {
+
+  const handleNavigateToDetails = (id) => {
     navigate(`/originaux/grands-formats/${id}`);
   };
 
@@ -22,24 +23,28 @@ const OriginauxGrands = () => {
       <div className="galerie-container">
         <Hero title="originaux grand format" className="hero-subtitle" />
         <HeroSubContent>
-          <div className="mail-container">
-            <p>
-              Vous êtes intéressé(e) par une œuvre originale ? Elles ne sont pas
-              disponibles à la vente sur le site, mais vous pouvez me contacter
-              sur mon mail : {""}
-              <a
-                className="mail-originaux"
-                href="mailto:margrittmartinet@gmail.com"
-              >
-                margrittmartinet@gmail.com
-              </a>
-            </p>
+          <div className="top-content">
+            <div className="mail-container">
+              <p>
+                Vous êtes intéressé(e) par une œuvre originale ? Elles ne sont
+                pas disponibles à la vente sur le site, mais vous pouvez me
+                contacter sur mon mail : {""}
+                <a
+                  className="mail-originaux"
+                  href="mailto:margrittmartinet@gmail.com"
+                >
+                  margrittmartinet@gmail.com
+                </a>
+              </p>
+            </div>
+            <div className="content-right">
+              <p>
+                Chaque oeuvre originale est unique, signée par l'artiste et
+                accompagnée d'un certificat d'authenticité.
+              </p>
+            </div>
           </div>
-          <div>
-            <p>
-              Chaque oeuvre originale est unique, signée par l'artiste et
-              accompagnée d'un certificat d'authenticité.
-            </p>
+          <div className="bottom-content">
             <div className="format">
               <div className="icon">
                 <IoIosResize />
@@ -66,7 +71,7 @@ const OriginauxGrands = () => {
                 >
                   <div
                     onClick={() => {
-                      handleNavigate(imgData.id, imgData.format);
+                      handleNavigateToDetails(imgData.id);
                     }}
                     className="images-container"
                   >
@@ -81,10 +86,12 @@ const OriginauxGrands = () => {
                     </picture>
                   </div>
                   <div className="image-content">
-                    <div className="content-left">
-                      <div className="image-title">
-                        <p>{imgData.title}</p>
-                      </div>
+                    <div className="infos-content">
+                      <p>{imgData.title}</p>
+                      <span>|</span>
+                      <p>{imgData.format}</p>
+                      <span>|</span>
+                      <p> {imgData.date}</p>
                     </div>
                     <div className="button-container">
                       <div className="infos-button-container">
@@ -92,14 +99,6 @@ const OriginauxGrands = () => {
                         <div className="icon">
                           <IoIosArrowForward />
                         </div>
-                      </div>
-                    </div>
-                    <div className="content-right">
-                      <div className="image-date">
-                        <p>{imgData.date}</p>
-                      </div>
-                      <div className="image-format">
-                        <p>({imgData.format})</p>
                       </div>
                     </div>
                   </div>

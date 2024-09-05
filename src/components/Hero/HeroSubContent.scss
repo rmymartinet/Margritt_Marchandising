@@ -2,23 +2,28 @@
 @import "../../sass/variables.scss";
 
 .sub-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  margin: 20px 0;
-  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5em;
+  margin: 5em 0;
   font-size: $fs-base;
 
-  .content-left {
-    font-size: $fs-base;
+  .top-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 10em;
+    padding: 0 10em;
 
-    span {
-      font-weight: 500;
+    > :first-child {
+      justify-self: end;
+      flex: 1;
     }
-  }
 
-  .content-right {
-    padding: 4vw;
+    .content-right {
+      flex: 1;
+    }
   }
 
   .format {

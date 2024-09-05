@@ -9,12 +9,12 @@ import "./Tirages.scss";
 
 const TiragesMoyens = () => {
   const tirages = originauxData.filter((item) => {
-    return item.dimension === "medium";
+    return item.dimension === "moyens-formats";
   });
 
   let navigate = useNavigate();
-  const handleNavigate = (id, size) => {
-    navigate(`/tirages/grands-formats/${id}`);
+  const handleNavigate = (id) => {
+    navigate(`/tirages/moyens-formats/${id}`);
   };
 
   return (
@@ -72,10 +72,12 @@ const TiragesMoyens = () => {
                     </picture>
                   </div>
                   <div className="image-content">
-                    <div className="content-left">
-                      <div className="image-title">
-                        <p>{imgData.title}</p>
-                      </div>
+                    <div className="infos-content">
+                      <p>{imgData.title}</p>
+                      <span>|</span>
+                      <p>{imgData.format}</p>
+                      <span>|</span>
+                      <p> {imgData.date}</p>
                     </div>
                     <div className="button-container">
                       <div className="infos-button-container">
@@ -84,13 +86,8 @@ const TiragesMoyens = () => {
                           <IoIosArrowForward />
                         </div>
                       </div>
-                    </div>
-                    <div className="content-right">
-                      <div className="image-date">
-                        <p>{imgData.date}</p>
-                      </div>
-                      <div className="image-format">
-                        <p>({imgData.format})</p>
+                      <div className="buy-button">
+                        <p>Acheter</p>
                       </div>
                     </div>
                   </div>

@@ -41,31 +41,15 @@
         height: 70%;
       }
       .image-content {
-        width: 95%;
-        padding: 60px 0px;
+        padding: 2em 4em;
+        width: 100%;
         display: flex;
+        justify-content: space-between;
+        font-size: $fs-base;
 
-        .content-left {
-          flex: 2;
-          font-size: $fs-base;
-          text-transform: uppercase;
-          font-weight: 500;
-        }
-
-        .content-right {
-          flex: 1;
+        .infos-content {
           display: flex;
-          align-items: flex-end;
-          flex-direction: column;
-
-          .image-date {
-            padding-bottom: 1em;
-            font-size: $fs-base;
-          }
-          .image-format {
-            opacity: 0.5;
-            font-size: $fs-sm;
-          }
+          gap: 1.2em;
         }
       }
     }

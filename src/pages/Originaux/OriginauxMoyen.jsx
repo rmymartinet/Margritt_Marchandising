@@ -9,12 +9,13 @@ import "./Originaux.scss";
 
 const OriginauxMoyens = () => {
   const originaux = originauxData.filter((item) => {
-    return item.dimension === "medium";
+    return item.dimension === "moyens-formats";
   });
 
   let navigate = useNavigate();
-  const handleNavigate = (id, size) => {
-    navigate(`/originaux/${id}`);
+
+  const handleNavigateToDetails = (id) => {
+    navigate(`/originaux/moyens-formats/${id}`);
   };
 
   return (
@@ -22,29 +23,33 @@ const OriginauxMoyens = () => {
       <div className="galerie-container">
         <Hero title="originaux moyen format" className="hero-subtitle" />
         <HeroSubContent>
-          <div className="mail-container">
-            <p>
-              Vous êtes intéressé(e) par une œuvre originale ? Elles ne sont pas
-              disponibles à la vente sur le site, mais vous pouvez me contacter
-              sur mon mail : {""}
-              <a
-                className="mail-originaux"
-                href="mailto:margrittmartinet@gmail.com"
-              >
-                margrittmartinet@gmail.com
-              </a>
-            </p>
+          <div className="top-content">
+            <div className="mail-container">
+              <p>
+                Vous êtes intéressé(e) par une œuvre originale ? Elles ne sont
+                pas disponibles à la vente sur le site, mais vous pouvez me
+                contacter sur mon mail : {""}
+                <a
+                  className="mail-originaux"
+                  href="mailto:margrittmartinet@gmail.com"
+                >
+                  margrittmartinet@gmail.com
+                </a>
+              </p>
+            </div>
+            <div className="content-right">
+              <p>
+                Chaque oeuvre originale est unique, signée par l'artiste et
+                accompagnée d'un certificat d'authenticité.
+              </p>
+            </div>
           </div>
-          <div>
-            <p>
-              Chaque oeuvre originale est unique, signée par l'artiste et
-              accompagnée d'un certificat d'authenticité.
-            </p>
+          <div className="bottom-content">
             <div className="format">
               <div className="icon">
                 <IoIosResize />
               </div>
-              <p>Taille 120 x 80 cm</p>
+              <p> Taille 50 x 70 cm</p>
             </div>
           </div>
         </HeroSubContent>
@@ -66,12 +71,7 @@ const OriginauxMoyens = () => {
                 >
                   <div
                     onClick={() => {
-                      handleNavigate(
-                        imgData.id,
-                        imgData.category,
-                        imgData.subCategory,
-                        "50 x 70 cm"
-                      );
+                      handleNavigateToDetails(imgData.id);
                     }}
                     className="images-container"
                   >
@@ -86,10 +86,12 @@ const OriginauxMoyens = () => {
                     </picture>
                   </div>
                   <div className="image-content">
-                    <div className="content-left">
-                      <div className="image-title">
-                        <p>{imgData.title}</p>
-                      </div>
+                    <div className="infos-content">
+                      <p>{imgData.title}</p>
+                      <span>|</span>
+                      <p>{imgData.format}</p>
+                      <span>|</span>
+                      <p> {imgData.date}</p>
                     </div>
                     <div className="button-container">
                       <div className="infos-button-container">
@@ -97,14 +99,6 @@ const OriginauxMoyens = () => {
                         <div className="icon">
                           <IoIosArrowForward />
                         </div>
-                      </div>
-                    </div>
-                    <div className="content-right">
-                      <div className="image-date">
-                        <p>{imgData.date}</p>
-                      </div>
-                      <div className="image-format">
-                        <p>({imgData.format})</p>
                       </div>
                     </div>
                   </div>

@@ -9,11 +9,11 @@ import "./Tirages.scss";
 
 const TiragesGrands = () => {
   const tirages = originauxData.filter((item) => {
-    return item.dimension === "large";
+    return item.dimension === "grands-formats";
   });
 
   let navigate = useNavigate();
-  const handleNavigate = (id, size) => {
+  const handleNavigate = (id) => {
     navigate(`/tirages/grands-formats/${id}`);
   };
 
@@ -22,8 +22,21 @@ const TiragesGrands = () => {
       <div className="galerie-container">
         <Hero title="tirages grand format" className="hero-subtitle" />
         <HeroSubContent>
-          <div className="content-left">
-            <span>Disponible à la vente via le site</span>
+          <div className="top-content">
+            <div className="mail-container">
+              <span>Disponible à la vente via le site</span>
+            </div>
+            <div className="content-right">
+              <p>
+                Les tirages sont des reproductions numériques de haute qualité
+                de mes œuvres originales. Chaque tirage est en édition limitée,
+                numéroté, signé par l'artiste et accompagné d'un certificat
+                d'authenticité. Les tirages sont en édition limitée et réalisés
+                par Les 'Courts Tirages'.
+              </p>
+            </div>
+          </div>
+          <div className="bottom-content">
             <div className="format">
               <div className="icon">
                 <IoIosResize />
@@ -31,13 +44,6 @@ const TiragesGrands = () => {
               <p> Taille 120 x 80 cm</p>
             </div>
           </div>
-          <p>
-            Les tirages sont des reproductions numériques de haute qualité de
-            mes œuvres originales. Chaque tirage est en édition limitée,
-            numéroté, signé par l'artiste et accompagné d'un certificat
-            d'authenticité. Les tirages sont en édition limitée et réalisés par
-            Les 'Courts Tirages'.
-          </p>
         </HeroSubContent>
         <motion.div className="grid-images-content" exit="exit">
           <div className="img-gallery-container">
@@ -72,10 +78,12 @@ const TiragesGrands = () => {
                     </picture>
                   </div>
                   <div className="image-content">
-                    <div className="content-left">
-                      <div className="image-title">
-                        <p>{imgData.title}</p>
-                      </div>
+                    <div className="infos-content">
+                      <p>{imgData.title}</p>
+                      <span>|</span>
+                      <p>{imgData.format}</p>
+                      <span>|</span>
+                      <p> {imgData.date}</p>
                     </div>
                     <div className="button-container">
                       <div className="infos-button-container">
@@ -84,13 +92,9 @@ const TiragesGrands = () => {
                           <IoIosArrowForward />
                         </div>
                       </div>
-                    </div>
-                    <div className="content-right">
-                      <div className="image-date">
-                        <p>{imgData.date}</p>
-                      </div>
-                      <div className="image-format">
-                        <p>({imgData.format})</p>
+
+                      <div className="buy-button">
+                        <p>Acheter</p>
                       </div>
                     </div>
                   </div>
