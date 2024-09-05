@@ -1,0 +1,176 @@
+.iphone-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 50;
+}
+
+.iphone-frame {
+  position: relative;
+  width: 230px;
+  height: 430px;
+  margin-left: -9px;
+  border-radius: 35px;
+}
+
+.silencer,
+.volume-up,
+.volume-down,
+.button-on {
+  position: absolute;
+  background-color: #94a3b8; /* slate-400 */
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.silencer {
+  width: 2px;
+  height: 13px;
+  left: -2.5px;
+  top: 81.5px;
+}
+
+.volume-up {
+  width: 2px;
+  height: 28px;
+  left: -2.5px;
+  top: 110px;
+}
+
+.volume-down {
+  width: 2px;
+  height: 28px;
+  left: -2.5px;
+  top: 148px;
+}
+
+.button-on {
+  width: 2px;
+  height: 45px;
+  right: -2px;
+  top: 121px;
+}
+
+.iphone-screen {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 6px solid black;
+  border-radius: 35px;
+  overflow: hidden;
+  background-color: white;
+
+  .video-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.camera {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 76px;
+  height: 20px;
+  background-color: black;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.camera-lens {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  left: 12px;
+  top: 5px;
+}
+
+.camera-inner-lens {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.3;
+  filter: blur(1px);
+}
+
+.camera-dot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.camera-line {
+  position: absolute;
+  width: 28px;
+  height: 1px;
+  background-color: white;
+  border-radius: 20px;
+  top: -3px;
+  opacity: 0.2;
+}
+
+.battery-signal {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  right: 17px;
+  top: 8px;
+  font-size: 10px;
+}
+
+.battery {
+  position: relative;
+  margin-top: 4px;
+  height: 7px;
+  width: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.709);
+  border-radius: 2px;
+}
+
+.battery-level {
+  width: calc(80% - 2px);
+  height: calc(100% - 2px);
+  background-color: white;
+  margin: 1px;
+  border-radius: 1px;
+}
+
+.battery-tip {
+  position: absolute;
+  right: -2px;
+  top: 1.5px;
+  width: 1px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.709);
+  border-radius: 2px;
+}
+
+.bottom-line {
+  position: absolute;
+  height: 2px;
+  width: 80px;
+  background-color: black;
+  bottom: 6px;
+  border-radius: 2px;
+  opacity: 0.8;
+}

@@ -2,15 +2,13 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-
 import videoBic from "../../assets/videos/bicVideo.mp4";
 import { Transition } from "../../components/Animations/PageTransition/Transition.jsx";
 import { TitleTransition } from "../../components/Animations/TextAnimation.jsx";
 import Circle from "../../components/Common/Circle.jsx";
 import Form from "../../components/Form/Form.jsx";
-import { originauxData } from "../../data/data";
-
 import SocialMedia from "../../components/SocialMedia/SocialMedia.jsx";
+import { originauxData } from "../../data/data";
 import "./Home.scss";
 
 gsap.registerPlugin(Flip);
@@ -47,7 +45,9 @@ const Home = () => {
             <h2>Collaboration avec bic</h2>
           </div>
           <div className="bic-video-container">
-            <video loop autoPlay muted src={videoBic} />
+            <a href="https://www.instagram.com/p/C7xDlCzo2_P/">
+              <video loop autoPlay muted src={videoBic} />
+            </a>
           </div>
         </div>
         <SocialMedia />
