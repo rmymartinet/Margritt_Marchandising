@@ -56,18 +56,20 @@
       }
 
       .details-infos {
+        width: 100%;
         display: grid;
-        grid-template-rows: repeat(5, max-content);
-        line-height: 1.5;
+        place-items: center;
+        font-size: $fs-base;
+
         .serie,
         .date,
         .piece,
         .format,
         .paper {
-          display: grid;
-          grid-template-columns: 0.5fr 1fr;
+          display: flex;
+          justify-content: space-between;
+          width: 80%;
         }
-        font-size: $fs-base;
       }
 
       .buy-container {

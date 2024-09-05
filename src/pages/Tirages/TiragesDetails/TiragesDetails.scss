@@ -56,7 +56,6 @@
       }
 
       .details-infos {
-        border: solid red 2px;
         width: 100%;
         display: grid;
         place-items: center;
@@ -67,11 +66,9 @@
         .piece,
         .format,
         .paper {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          place-items: center;
-          border: solid red 2px;
-          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          width: 80%;
         }
       }
 

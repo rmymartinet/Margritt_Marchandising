@@ -7,7 +7,9 @@ import HeroSubContent from "../../components/Hero/HeroSubContent";
 import { originauxData } from "../../data/data";
 import "./Originaux.scss";
 
-const OriginauxGrands = () => {
+const OriginauxGrands = ({ isCursorPointer }) => {
+  isCursorPointer === true;
+
   const originaux = originauxData.filter((item) => {
     return item.dimension === "grands-formats";
   });
@@ -58,7 +60,6 @@ const OriginauxGrands = () => {
             {originaux.map((imgData, id) => {
               return (
                 <motion.div
-                  className={`grid-img${id} img`}
                   key={id}
                   initial={{ y: 100 }}
                   animate={{
@@ -79,7 +80,6 @@ const OriginauxGrands = () => {
                       <source type="image/webp" srcSet={imgData.imgWebp} />
                       <img
                         loading="lazy"
-                        className={`img-${id}`}
                         alt={imgData.alt}
                         src={imgData.imgJpg}
                       />
@@ -87,11 +87,13 @@ const OriginauxGrands = () => {
                   </div>
                   <div className="image-content">
                     <div className="infos-content">
-                      <p>{imgData.title}</p>
-                      <span>|</span>
-                      <p>{imgData.format}</p>
-                      <span>|</span>
-                      <p> {imgData.date}</p>
+                      <div className="infos">
+                        <p>{imgData.title}</p>
+                        <span>|</span>
+                        <p>{imgData.format}</p>
+                        <span>|</span>
+                        <p> {imgData.date}</p>
+                      </div>
                     </div>
                     <div className="button-container">
                       <div className="infos-button-container">

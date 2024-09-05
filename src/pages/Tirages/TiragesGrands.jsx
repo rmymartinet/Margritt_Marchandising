@@ -50,7 +50,6 @@ const TiragesGrands = () => {
             {tirages.map((imgData, id) => {
               return (
                 <motion.div
-                  className={`grid-img${id} img`}
                   key={id}
                   initial={{ y: 100 }}
                   animate={{
@@ -71,7 +70,7 @@ const TiragesGrands = () => {
                       <source type="image/webp" srcSet={imgData.imgWebp} />
                       <img
                         loading="lazy"
-                        className={`img-${id}`}
+                        className="img"
                         alt={imgData.alt}
                         src={imgData.imgJpg}
                       />
@@ -79,11 +78,16 @@ const TiragesGrands = () => {
                   </div>
                   <div className="image-content">
                     <div className="infos-content">
-                      <p>{imgData.title}</p>
-                      <span>|</span>
-                      <p>{imgData.format}</p>
-                      <span>|</span>
-                      <p> {imgData.date}</p>
+                      <div className="infos">
+                        <p>{imgData.title}</p>
+                        <span>|</span>
+                        <p>{imgData.format}</p>
+                        <span>|</span>
+                        <p> {imgData.date}</p>
+                      </div>
+                      <div className="price">
+                        <span>Prix : 600 euros</span>
+                      </div>
                     </div>
                     <div className="button-container">
                       <div className="infos-button-container">
