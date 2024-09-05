@@ -11,11 +11,13 @@ const Projects = () => {
 
   return (
     <>
-      <motion.section className="project-container" ref={containerRef}>
-        <Exposition />
-        <Activity />
-        <PriceReviews />
-      </motion.section>
+      <div className="projects-container">
+        <motion.section className="project-content" ref={containerRef}>
+          <Exposition />
+          <Activity />
+          <PriceReviews />
+        </motion.section>
+      </div>
     </>
   );
 };

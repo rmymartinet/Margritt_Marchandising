@@ -1,11 +1,11 @@
 @import "../../sass/mixins.scss";
 @import "../../sass/variables.scss";
 
-.projects {
+.projects-container {
   padding: 0 4vw;
   margin-bottom: 10vh;
 
-  .project-container {
+  .project-content {
     margin-top: 10vh;
     .latest-project {
       width: 100%;

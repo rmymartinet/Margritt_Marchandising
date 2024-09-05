@@ -56,15 +56,6 @@ import futurama3MoyenJpg from "../assets/images/Gallery/Tirage_50/dimension_1500
 import about1Jpg from "../assets/images/about/about1.jpg";
 import about2Jpg from "../assets/images/about/about2.jpg";
 
-import instagram1 from "../assets/images/about/instagram/webp/instagram1.webp";
-import instagram2 from "../assets/images/about/instagram/webp/instagram2.webp";
-import instagram3 from "../assets/images/about/instagram/webp/instagram3.webp";
-import instagram4 from "../assets/images/about/instagram/webp/instagram4.webp";
-import instagram5 from "../assets/images/about/instagram/webp/instagram5.webp";
-import instagram6 from "../assets/images/about/instagram/webp/instagram6.webp";
-import instagram7 from "../assets/images/about/instagram/webp/instagram7.webp";
-import instagram8 from "../assets/images/about/instagram/webp/instagram8.webp";
-
 export const originalBibulle = {
   webp: {
     bibulle1: bibulle1,
@@ -147,18 +138,4 @@ export const about = {
     about1: about1Jpg,
     about2: about2Jpg,
   },
-};
-
-export const instagram = {
-  webp: {
-    instagram1: instagram1,
-    instagram2: instagram2,
-    instagram3: instagram3,
-    instagram4: instagram4,
-    instagram5: instagram5,
-    instagram6: instagram6,
-    instagram7: instagram7,
-    instagram8: instagram8,
-  },
-  jpg: {},
 };
