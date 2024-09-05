@@ -30,7 +30,7 @@ const Form = () => {
     >
       <div className="hero-content">
         <div className="title">
-          <p>Let's discuss</p>
+          <p>Contact</p>
         </div>
         <div className="mail">
           <a href={`mailto: ${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
