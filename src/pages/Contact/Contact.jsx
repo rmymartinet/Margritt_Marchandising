@@ -9,6 +9,7 @@ import {
 import Divider from "../../components/Common/Divider.jsx";
 import InfoItem from "../../components/Common/InfoItem.jsx";
 import SvgName from "../../components/SvgName/SvgName.jsx";
+import { CONTACT_INFO } from "../../data/dataContactInfos.js";
 import "../Contact/Contact.scss";
 
 const Contact = () => {
@@ -62,14 +63,14 @@ const Contact = () => {
           <InfoItem label="Local Time" value={time} className="local-time" />
           <InfoItem
             label="Number"
-            value="+33.7.83.40.51.05"
+            value={CONTACT_INFO.number}
             className="number"
           />
           <InfoItem
             label="Instagram"
             value={
               <a
-                href="https://www.instagram.com/maargriitt/"
+                href={CONTACT_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -79,17 +80,17 @@ const Contact = () => {
             className="instagram"
           />
           <InfoItem
-            label="Made by"
+            label="TikTok"
             value={
               <a
-                href="https://www.linkedin.com/in/martinetr%C3%A9my/"
+                href={CONTACT_INFO.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Martinet Rémy
+                @margriitt
               </a>
             }
-            className="made-by"
+            className="tiktok"
           />
         </div>
         <div className="name">

@@ -58,17 +58,17 @@ const Form = () => {
           className="instagram"
         />
         <InfoItem
-          label="Made by"
+          label="TikTok"
           value={
             <a
-              href={CONTACT_INFO.linkedin}
+              href={CONTACT_INFO.tiktok}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Martinet Rémy
+              @margriitt
             </a>
           }
-          className="made-by"
+          className="tiktok"
         />
       </div>
       <div className="name">

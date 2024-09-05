@@ -116,7 +116,7 @@
     .local-time,
     .number,
     .instagram,
-    .made-by {
+    .tiktok {
       display: flex;
       flex-direction: column;
       gap: 1.5em;
@@ -126,7 +126,7 @@
     .instagram {
       justify-self: flex-end;
     }
-    .made-by {
+    .tiktok {
       justify-self: flex-end;
     }
   }
@@ -148,7 +148,7 @@
       .instagram {
         justify-self: center;
       }
-      .made-by {
+      .tiktok {
         justify-self: center;
       }
     }
