@@ -22,22 +22,28 @@ const TiragesMoyens = () => {
       <div className="galerie-container">
         <Hero title="tirages grand format" className="hero-subtitle" />
         <HeroSubContent>
-          <div className="content-left">
-            <span>Disponible à la vente via le site</span>
+          <div className="top-content">
+            <div className="mail-container">
+              <span>Disponible à la vente via le site</span>
+            </div>
+            <div className="content-right">
+              <p>
+                Les tirages sont des reproductions numériques de haute qualité
+                de mes œuvres originales. Chaque tirage est en édition limitée,
+                numéroté, signé par l'artiste et accompagné d'un certificat
+                d'authenticité. Les tirages sont en édition limitée et réalisés
+                par Les 'Courts Tirages'.
+              </p>
+            </div>
+          </div>
+          <div className="bottom-content">
             <div className="format">
               <div className="icon">
                 <IoIosResize />
               </div>
-              <p> Taille 50 x 70 cm</p>
+              <p>Taille 50 x 70 cm</p>
             </div>
           </div>
-          <p>
-            Les tirages sont des reproductions numériques de haute qualité de
-            mes œuvres originales. Chaque tirage est en édition limitée,
-            numéroté, signé par l'artiste et accompagné d'un certificat
-            d'authenticité. Les tirages sont en édition limitée et réalisés par
-            Les 'Courts Tirages'.
-          </p>
         </HeroSubContent>
         <motion.div className="grid-images-content" exit="exit">
           <div className="img-gallery-container">

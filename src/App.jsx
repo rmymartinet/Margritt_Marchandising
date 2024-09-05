@@ -11,7 +11,9 @@ import Contact from "./pages/Contact/Contact.jsx";
 import Gallery from "./pages/Galleries/Galleries.jsx";
 import Home from "./pages/Home/Home.jsx";
 import OriginauxGrands from "./pages/Originaux/OrginauxGrand.jsx";
+import OriginauxDetails from "./pages/Originaux/OriginauxDetails/OriginauxDetails.jsx";
 import OriginauxMoyens from "./pages/Originaux/OriginauxMoyen.jsx";
+import TiragesDetails from "./pages/Tirages/TiragesDetails/TiragesDetails.jsx";
 import TiragesGrands from "./pages/Tirages/TiragesGrands.jsx";
 import TiragesMoyens from "./pages/Tirages/TiragesMoyens.jsx";
 import useCountStore from "./store/useCountStore.jsx";
@@ -132,6 +134,10 @@ function App() {
               element={<OriginauxMoyens data-scroll />}
             />
             <Route
+              path="/originaux/:size/:id"
+              element={<OriginauxDetails data-scroll />}
+            />
+            <Route
               path={`/tirages/${t("nav.grandsFormats")
                 .toLocaleLowerCase()
                 .replace(/ /g, "-")}`}
@@ -142,6 +148,10 @@ function App() {
                 .toLocaleLowerCase()
                 .replace(/ /g, "-")}`}
               element={<TiragesMoyens data-scroll />}
+            />
+            <Route
+              path="/tirages/:size/:id"
+              element={<TiragesDetails data-scroll />}
             />
             <Route
               path={`/${t("nav.about")}`}

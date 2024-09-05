@@ -1,0 +1,119 @@
+@import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
+
+.social-media {
+  margin-top: 20vh;
+  width: 100%;
+  height: 100vh;
+
+  .social-content {
+    height: 80%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-left: 5vw;
+
+    .social-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .dividere {
+        height: 1px;
+        background-color: black;
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      .follower-number {
+        font-size: 2em;
+        font-weight: 400;
+        display: flex;
+        gap: 10px;
+
+        .follower-content {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 0.7em;
+          padding: 5px 8px;
+          border-radius: 20px;
+          border: solid 1px black;
+          width: max-content;
+        }
+
+        .icon {
+          display: grid;
+          place-content: center;
+        }
+      }
+    }
+
+    .social-right {
+      overflow: hidden;
+      height: 100%;
+      .video-content {
+        width: 50%;
+        height: 100%;
+
+        video {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 498px) {
+  .social-media {
+    margin: 20vh 0;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+
+    .social-content {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+
+      .social-left {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        margin-bottom: 5vh;
+
+        .follower-number {
+          display: flex;
+          flex-direction: column;
+          font-size: 1.5em;
+        }
+        .follow-me-text {
+          .social-link {
+            overflow: hidden;
+          }
+          p {
+            font-size: $fs-lg;
+            display: inline-block;
+          }
+
+          span {
+            font-size: 0.7em;
+          }
+        }
+      }
+
+      .social-right {
+        overflow: hidden;
+        height: 100%;
+
+        .video-content {
+          width: 100%;
+          height: 100%;
+
+          video {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
