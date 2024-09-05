@@ -1,6 +1,8 @@
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
 import videoInstagramScroll from "../../assets/videos/instagram_scroll.mp4";
+import videoTiktokScroll from "../../assets/videos/tiktok_scroll.mp4";
+import Iphone from "../Common/Iphone/Iphone";
 import "./SocialMedia.scss";
 import TextContentLinks from "./TextContentLinks";
 
@@ -38,8 +40,11 @@ const SocialMedia = () => {
           </div>
         </div>
         <div className="social-right">
-          <div className="video-content">
-            <video autoPlay muted loop src={videoInstagramScroll}></video>
+          <div className="iphone-left">
+            <Iphone videoUrl={videoInstagramScroll} />
+          </div>
+          <div className="iphone-right">
+            <Iphone videoUrl={videoTiktokScroll} />
           </div>
         </div>
       </div>
