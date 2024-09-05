@@ -1,22 +1,21 @@
-import { Power1, Power2 } from "gsap";
+import { Power1, Power3 } from "gsap";
 
 export const childrenAnimation = {
   initial: {
-    opacity: 0,
-    top: 100,
+    y: 500,
   },
   animate: {
-    opacity: 1,
     y: 0,
     transition: {
-      ease: Power1.easeOut,
+      ease: Power3.easeInOut,
+      duration: 0.7,
     },
   },
   exit: {
-    y: -1000,
+    y: 500,
     opacity: 0,
     transition: {
-      ease: Power1.easeIn,
+      ease: Power1.easeInOut,
       duration: 1,
     },
   },
@@ -32,8 +31,8 @@ export const slideOutAnimation = {
   exit: {
     scaleY: 1,
     transition: {
-      duration: 1,
-      ease: Power1.easeOut,
+      duration: 0.7,
+      ease: Power3.easeinOut,
     },
   },
 };
@@ -45,8 +44,8 @@ export const slideInAnimation = {
   animate: {
     scaleY: 0,
     transition: {
-      duration: 1,
-      ease: Power2.easeOut,
+      duration: 0.7,
+      ease: Power3.easeinOut,
     },
   },
   exit: {
@@ -64,7 +63,7 @@ export const animateSlideImg = {
   exit: {
     y: -1000,
     transition: {
-      delay: 0, // Augmenter le délai avant le début de l'animation
+      delay: 0,
       duration: 2,
       ease: Power1.easeOut,
     },
