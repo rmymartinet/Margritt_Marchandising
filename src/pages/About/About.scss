@@ -51,7 +51,6 @@
       grid-row: 2;
 
       .left-text {
-        // font-family: $font-text;
         letter-spacing: -0.02em;
         font-size: $fs-md;
         line-height: 1.5em;
@@ -67,12 +66,10 @@
         overflow: hidden;
         .left-wrapper {
           height: 40vh;
-
           position: relative;
           display: block;
           padding-top: 25%;
         }
-
         .left-wrapper img {
           height: 100%;
           width: 100%;
@@ -94,13 +91,11 @@
 
     .quote-title {
       grid-column: 1 / span 2;
-      // font-family: $font-subtitle;
       font-weight: 500;
       font-size: $fs-xxl;
       margin-bottom: 10vh;
     }
     .quote-text {
-      // font-family: $font-text;
       font-weight: 300;
       grid-column: 1 / span 2;
       text-align: justify;
@@ -122,149 +117,6 @@
           position: absolute;
           opacity: 20%;
         }
-      }
-    }
-  }
-
-  .gallery {
-    display: flex;
-    align-items: center;
-
-    .gallery-title {
-      h1 {
-        // font-family: $font-title;
-        font-weight: 900;
-        font-size: clamp(1.2rem, 15vw, 15rem);
-      }
-      .more-content {
-        position: relative;
-        width: max-content;
-      }
-
-      .heart {
-        position: absolute;
-        bottom: 0px;
-        right: -20px;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.078);
-        backdrop-filter: blur(10.4px);
-        -webkit-backdrop-filter: blur(7.4px);
-        border: none;
-      }
-
-      .like-logo {
-        font-size: 25px;
-      }
-
-      .like-logo:hover {
-        animation: swing infinite 0.3s;
-      }
-
-      @keyframes swing {
-        0% {
-          transform: rotate(-10deg);
-        }
-        50% {
-          transform: rotate(10deg);
-        }
-        100% {
-          transform: rotate(-10deg);
-        }
-      }
-    }
-
-    .gallery-items {
-      padding: 10px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.406);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.088);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      width: 40%;
-      z-index: -1;
-      height: max-content;
-      display: grid;
-      .profile {
-        border-radius: 20px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.359);
-        backdrop-filter: blur(7.4px);
-        -webkit-backdrop-filter: blur(7.4px);
-      }
-    }
-
-    .gallery-img img,
-    .gallery-video video {
-      border-radius: 20px;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .instagram {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
-
-    .instagram-top-banner {
-      position: absolute;
-      width: 100%;
-      top: 5%;
-      left: 5%;
-      font-size: $fs-xxxl;
-      color: $primary-color;
-      // text-transform: uppercase;
-      z-index: 9999999999;
-
-      .instagram-link {
-        color: $primary-color;
-        text-decoration: none;
-        &:hover {
-          color: $matching-color5;
-        }
-      }
-    }
-
-    .circle {
-      width: 200px;
-      height: 200px;
-      background-color: $matching-color2;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: "translate(-50%, -50%)";
-    }
-
-    .instagram-content {
-      z-index: 99999999999;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 50vh;
-      display: flex;
-
-      .slider {
-        display: flex;
-        width: 100vw;
-        gap: 40px;
-      }
-      .cards,
-      .cards1 {
-        gap: 40px;
-        width: max-content;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
       }
     }
   }
@@ -299,18 +151,6 @@
         .word {
           margin-right: 5px;
           margin-top: 7px;
-        }
-      }
-    }
-    .gallery {
-      .gallery-title {
-        .heart {
-          width: 40px;
-          height: 40px;
-        }
-
-        .like-logo {
-          font-size: 25px;
         }
       }
     }
@@ -349,18 +189,6 @@
         }
       }
     }
-    .gallery {
-      .gallery-title {
-        .heart {
-          width: 40px;
-          height: 40px;
-        }
-
-        .like-logo {
-          font-size: 25px;
-        }
-      }
-    }
   }
 }
 
@@ -368,7 +196,6 @@
   .about-container {
     .about-content {
       .about-title {
-        margin: 0;
         padding: 0;
       }
 
@@ -392,89 +219,6 @@
       }
       .quote-text {
         padding: 0;
-      }
-    }
-
-    .gallery {
-      flex-direction: column;
-      .gallery-title {
-        h1 {
-          font-size: 25vw;
-        }
-        .heart {
-          width: 25px;
-          height: 25px;
-        }
-
-        .like-logo {
-          font-size: 15px;
-        }
-      }
-
-      .gallery-items {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-    }
-
-    .instagram {
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      position: relative;
-
-      .instagram-top-banner {
-        position: absolute;
-        width: 100%;
-        top: 5%;
-        left: 5%;
-        font-size: $fs-xxxl;
-        color: $primary-color;
-        z-index: 9999999999;
-
-        .instagram-link {
-          color: $primary-color;
-          text-decoration: none;
-          &:hover {
-            color: $matching-color5;
-          }
-        }
-      }
-
-      .circle {
-        width: 200px;
-        height: 200px;
-        background-color: $matching-color2;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: "translate(-50%, -50%)";
-      }
-
-      .instagram-content {
-        z-index: 99999999999;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 50vh;
-        display: flex;
-
-        .slider {
-          display: flex;
-          width: 100vw;
-          gap: 0px;
-        }
-        .cards,
-        .cards1 {
-          gap: 10px;
-          width: 250vw;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-        }
       }
     }
   }

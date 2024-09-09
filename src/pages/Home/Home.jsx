@@ -34,15 +34,14 @@ const Home = () => {
             <div className="title">
               <h1>Margritt</h1>
               <p>
-                Laisser vos yeux se perdre dans les couleurs et les formes de
-                mes oeuvres.
+                No limits, just art. <br />
               </p>
             </div>
           </div>
         </div>
         <div className="bic-container">
           <div className="bic-title">
-            <h2>Collaboration avec bic</h2>
+            <h2>Collaboration avec Bic</h2>
           </div>
           <div className="bic-video-container">
             <a href="https://www.instagram.com/p/C7xDlCzo2_P/">

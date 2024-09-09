@@ -23,9 +23,6 @@ const Gallery = () => {
         <Hero title="Galerie" className="hero-subtitle" />
         <HeroSubContent>
           <div className="top-content">
-            <div className="mail-container">
-              <span>Indisponible à la vente</span>
-            </div>
             <div className="content-right">
               <TextContentLinks
                 text="

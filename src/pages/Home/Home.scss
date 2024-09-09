@@ -46,6 +46,7 @@
         h1 {
           text-transform: uppercase;
           font-size: 17vw;
+          font-weight: 500;
         }
         p {
           align-self: flex-end;
@@ -66,8 +67,6 @@
     .bic-video-container {
       display: grid;
       place-content: center;
-      padding: 0 4vw;
-
       video {
         border-radius: 20px;
         width: 100%;
@@ -84,33 +83,8 @@
     }
     .bic-container {
       .bic-title {
-        margin: 0 4vw;
         font-size: $fs-md;
         margin-bottom: 5vh;
-      }
-    }
-
-    .projects {
-      .latest-infos {
-        flex-direction: column;
-      }
-    }
-  }
-}
-
-@media (max-width: 350px) {
-  .home-container {
-    .projects {
-      .latest-infos {
-        gap: 2em;
-
-        .projects-infos {
-          align-items: center;
-          padding: 1em;
-          .title {
-            font-size: $fs-xxl;
-          }
-        }
       }
     }
   }
