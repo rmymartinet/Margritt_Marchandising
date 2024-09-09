@@ -11,14 +11,12 @@ const SocialMedia = () => {
     <section className="social-media">
       <div className="social-content">
         <div className="social-left">
-          <div>
-            <h2>Suivez mon quotidien d'artiste.</h2>
-          </div>
+          <h2>Suivez mon quotidien d'artiste.</h2>
           <div>
             <div className="follower-number">
               <div className="follower-content">
                 <span>
-                  <p>+ 20.000 </p>
+                  <p>+ 22.000 </p>
                 </span>
                 <div className="icon">
                   <FaInstagram />
