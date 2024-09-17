@@ -4,7 +4,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import videoBic from "../../assets/videos/bicVideo.mp4";
 import { Transition } from "../../components/Animations/PageTransition/Transition.jsx";
-import { TitleTransition } from "../../components/Animations/TextAnimation.jsx";
+import {
+  LineTransition,
+  TitleTransition,
+} from "../../components/Animations/TextAnimation.jsx";
 import Circle from "../../components/Common/Circle.jsx";
 import Form from "../../components/Form/Form.jsx";
 import SocialMedia from "../../components/SocialMedia/SocialMedia.jsx";
@@ -29,11 +32,12 @@ const Home = () => {
     <Transition>
       <section className="home-container">
         <div className="home-content">
-          <TitleTransition textClassName="title-content h1" yposition="400" />
+          <TitleTransition textClassName="title-content h1" yposition="800" />
           <div className="title-content">
             <div className="title">
               <h1>Margritt</h1>
-              <p>
+              <LineTransition textClassName="subtitle" yposition="800" />
+              <p className="subtitle">
                 No limits, just art. <br />
               </p>
             </div>
@@ -41,7 +45,7 @@ const Home = () => {
         </div>
         <div className="bic-container">
           <div className="bic-title">
-            <h2>Collaboration avec Bic</h2>
+            <h2>Collaboration with Bic</h2>
           </div>
           <div className="bic-video-container">
             <a href="https://www.instagram.com/p/C7xDlCzo2_P/">
