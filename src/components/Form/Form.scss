@@ -2,8 +2,8 @@
 @import "../../sass/variables.scss";
 
 .form-container {
-  background: $secondary-color;
   color: $primary-color;
+  background-color: $secondary-color;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   height: 100vh;
