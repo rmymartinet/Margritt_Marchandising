@@ -26,6 +26,7 @@
     flex-direction: row-reverse;
     align-items: center;
     gap: 20vw;
+    text-wrap: pretty;
 
     .mail {
       font-size: $fs-xxl;

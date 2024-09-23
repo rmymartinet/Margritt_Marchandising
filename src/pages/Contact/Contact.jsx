@@ -2,10 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Transition } from "../../components/Animations/PageTransition/Transition.jsx";
-import {
-  TextTransition,
-  TitleTransition,
-} from "../../components/Animations/TextAnimation.jsx";
+import { TitleTransition } from "../../components/Animations/TextAnimation.jsx";
 import Divider from "../../components/Common/Divider.jsx";
 import InfoItem from "../../components/Common/InfoItem.jsx";
 import SvgName from "../../components/SvgName/SvgName.jsx";
@@ -44,9 +41,10 @@ const Contact = () => {
           <p>{t("contact.title")}</p>
         </div>
 
-        <TextTransition textClassName="contact-subtitle" />
         <div className="contact-subtitle">
-          <div className="text">{t("contact.text1")}</div>
+          <div className="text">
+            Interested in a piece from my galleries? Let me know!
+          </div>
           <div
             className={isHovered ? "mail" : "mail"}
             onMouseEnter={() => setIsHovered(true)}
