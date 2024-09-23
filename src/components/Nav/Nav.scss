@@ -13,16 +13,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 20px 60px;
+
       position: relative;
 
+      .links-container::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 1px;
+        width: 65vw;
+        background-color: #d9d9d9;
+      }
       .links-container {
         display: flex;
         align-items: center;
-        gap: 60px;
+        gap: 3vw;
         position: relative;
         padding-bottom: 20px;
-        border-bottom: solid 1px #d8d8d8;
+        flex: 1;
+        width: max-content;
+        justify-content: center;
+        position: relative;
 
         .background {
           position: absolute;
@@ -33,6 +48,7 @@
           background-color: black;
           border-radius: 5px;
           z-index: 10;
+          width: max-content;
         }
         .nav-item {
           display: flex;
@@ -50,13 +66,15 @@
           .rotate-active {
             color: white;
             cursor: pointer;
+            rotate: -180deg;
+            transition: rotate 0.3s ease;
           }
 
           .rotate {
+            transition: rotate 0.3s ease;
             cursor: pointer;
           }
 
-          /* Style du menu déroulant */
           .dropdown-menu {
             padding-top: 20px;
             position: absolute;
@@ -81,6 +99,51 @@
                 background-color: #444;
               }
             }
+          }
+        }
+      }
+
+      .nav-right {
+        padding-bottom: 20px;
+        justify-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        margin-left: auto;
+
+        .connection {
+          border: none;
+          background-color: transparent;
+        }
+
+        .admin-button {
+          cursor: pointer;
+          font-weight: 500;
+          color: white;
+          background-color: black;
+          padding: 10px 20px;
+          border-radius: 20px;
+        }
+
+        .shopping-icon {
+          cursor: pointer;
+          position: relative;
+
+          .article-number {
+            position: absolute;
+            bottom: -10px;
+            right: -15px;
+            border-radius: 50%;
+            width: 10px; // Ajoutez une largeur
+            height: 10px; // Ajoutez une hauteur
+            padding: 9px;
+            display: flex; // Centre le contenu
+            font-size: 10px;
+            font-weight: 500;
+            justify-content: center; // Centre le contenu horizontalement
+            align-items: center; // Centre le contenu verticalement
+            background-color: black;
+            color: white;
           }
         }
       }

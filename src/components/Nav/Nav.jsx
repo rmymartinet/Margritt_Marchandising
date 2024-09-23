@@ -1,15 +1,22 @@
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+} from "@clerk/clerk-react";
 import { useGSAP } from "@gsap/react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { FiShoppingCart } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useOutsideClick from "../../store/useOutsideClick";
+import { useStoreShopping } from "../../store/useStoreShopping";
 import "./Nav.scss";
 
 const Nav = () => {
-  const { t } = useTranslation();
   const [isClicked, setIsClicked] = useState(null);
   const [isTiragesDropdown, setIsTiragesDropdown] = useState(false);
   const [isOriginauxDropdown, setIsOriginauxDropdown] = useState(false);
@@ -29,21 +36,22 @@ const Nav = () => {
 
   const navItems = useMemo(
     () => [
-      t("nav.home"),
-      t("nav.galleries"),
-      t("nav.originaux"),
-      t("nav.tirages"),
-      t("nav.about"),
-      t("nav.contact"),
+      "Home",
+      "Gallery",
+      "Originals",
+      "Prints",
+      "Exhibitions",
+      "Info",
+      "Contact",
     ],
-    [t]
+    []
   );
   const handleNavigate = useCallback(
     (path, index) => {
       setIsClicked(index);
       const homePath = path === "/home" ? "/" : path;
 
-      if (path !== "/tirages" && path !== "/originaux") {
+      if (path !== "/prints" && path !== "/originals") {
         navigate(homePath);
       }
     },
@@ -52,8 +60,8 @@ const Nav = () => {
 
   useEffect(() => {
     if (isClicked !== null) {
-      const isTirages = navItems[isClicked] === t("nav.tirages");
-      const isOriginaux = navItems[isClicked] === t("nav.originaux");
+      const isTirages = navItems[isClicked] === "Prints";
+      const isOriginaux = navItems[isClicked] === "Originals";
 
       if (!isTirages) {
         setIsTiragesDropdown(false);
@@ -63,7 +71,7 @@ const Nav = () => {
         setIsOriginauxDropdown(false);
       }
     }
-  }, [isClicked, navItems, t]);
+  }, [isClicked, navItems]);
 
   const handleTiragesDropdown = useCallback(() => {
     setIsTiragesDropdown((prev) => !prev);
@@ -126,6 +134,19 @@ const Nav = () => {
     }
   }, [isOriginauxDropdown]);
 
+  const cart = useStoreShopping((state) => state.cart);
+
+  const totalProducts = cart.reduce((total, product) => {
+    console.log(total, product.quantity);
+    return total + product.quantity;
+  }, 0);
+
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
+
+  const { user } = useUser();
+
   return (
     <motion.div
       initial="initial"
@@ -139,8 +160,8 @@ const Nav = () => {
           <div className="links-container">
             {navItems.map((item, index) => {
               const path = `/${item.toLowerCase().replace(/ /g, "-")}`;
-              const isTirages = item === t("nav.tirages");
-              const isOriginaux = item === t("nav.originaux");
+              const isTirages = item === "Prints";
+              const isOriginaux = item === "Originals";
 
               return (
                 <motion.div
@@ -161,30 +182,18 @@ const Nav = () => {
                   {isTirages && isTiragesDropdown && (
                     <div ref={tiragesMenuRef} className="dropdown-menu">
                       <div
-                        onClick={() =>
-                          handleNavigate(
-                            `/tirages/${t("nav.grandsFormats")
-                              .toLowerCase()
-                              .replace(/ /g, "-")}`
-                          )
-                        }
+                        onClick={() => handleNavigate("/prints/large-formats")}
                         ref={text1}
                         className="dropdown-item"
                       >
-                        <p>{t("nav.grandsFormats")}</p>
+                        <p>large-formats</p>
                       </div>
                       <div
-                        onClick={() =>
-                          handleNavigate(
-                            `/tirages/${t("nav.moyensFormats")
-                              .toLowerCase()
-                              .replace(/ /g, "-")}`
-                          )
-                        }
+                        onClick={() => handleNavigate("/prints/medium-formats")}
                         ref={text2}
                         className="dropdown-item"
                       >
-                        <p> {t("nav.moyensFormats")}</p>
+                        <p>medium-formats</p>
                       </div>
                     </div>
                   )}
@@ -198,29 +207,21 @@ const Nav = () => {
                     <div ref={originauxMenuRef} className="dropdown-menu">
                       <div
                         onClick={() =>
-                          handleNavigate(
-                            `/originaux/${t("nav.grandsFormats")
-                              .toLowerCase()
-                              .replace(/ /g, "-")}`
-                          )
+                          handleNavigate("/originals/large-formats")
                         }
                         ref={text1}
                         className="dropdown-item"
                       >
-                        <p>{t("nav.grandsFormats")}</p>
+                        <p>large-format</p>
                       </div>
                       <div
                         onClick={() =>
-                          handleNavigate(
-                            `/originaux/${t("nav.moyensFormats")
-                              .toLowerCase()
-                              .replace(/ /g, "-")}`
-                          )
+                          handleNavigate("/originals/medium-formats")
                         }
                         ref={text2}
                         className="dropdown-item"
                       >
-                        <p>{t("nav.moyensFormats")}</p>
+                        <p>medium-format</p>
                       </div>
                     </div>
                   )}
@@ -234,6 +235,34 @@ const Nav = () => {
                 </motion.div>
               );
             })}
+          </div>
+          <div className="nav-right">
+            <div className="connection">
+              <SignedOut>
+                <SignInButton
+                  style={{
+                    border: "none",
+                    background: "none",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                  }}
+                />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div>
+            {user && user.publicMetadata?.role === "admin" && (
+              <Link to="/admin" className="admin-button">
+                Admin
+              </Link>
+            )}
+            <div className="shopping-icon">
+              <span onClick={() => handleCheckout()}>
+                <FiShoppingCart size={20} />
+                <div className="article-number">{totalProducts}</div>
+              </span>
+            </div>
           </div>
         </div>
       </div>

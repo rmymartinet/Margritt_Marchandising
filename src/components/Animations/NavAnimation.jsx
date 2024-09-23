@@ -1,20 +1,19 @@
 export const menuSlide = {
   initial: {
-    width: "100%",
-    height: "0%",
+    width: "0dvw",
     position: "fixed",
     top: "0",
-    left: "0%",
+    left: "0",
   },
 
   enter: {
-    transition: { duration: 1.4, ease: [0.76, 0, 0.24, 1] },
-    height: "100%",
+    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
+    width: "100dvw",
     position: "fixed",
   },
 
   exit: {
-    height: "0%",
+    width: "0%",
     position: "fixed",
     transition: {
       duration: 1,
@@ -27,22 +26,22 @@ const delayGlobal = 0.2;
 
 export const slide = {
   initial: (i) => ({
-    y: i - 800,
+    x: i - 700,
     opacity: 0,
   }),
 
   enter: (i) => ({
-    y: i * 0,
+    x: i * 0,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 0.7,
       ease: [0.76, 0, 0.24, 1],
-      delay: 0.03 * i + delayGlobal,
+      delay: 0.05 * i + delayGlobal,
     },
   }),
 
   exit: (i) => ({
-    y: i - 800,
+    x: i - 700,
     opacity: 0,
     transition: {
       duration: 0.4,
@@ -55,7 +54,7 @@ export const slide = {
 export const slideText = {
   initial: {
     x: 0,
-    opacity: 0, // Mettre l'opacité à 1 seulement pour l'élément avec l'index 1
+    opacity: 0,
   },
 
   enter: {
