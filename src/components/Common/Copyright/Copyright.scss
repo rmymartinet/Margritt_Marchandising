@@ -1,0 +1,14 @@
+@import "../../../sass/variables.scss";
+@import "../../../sass/mixins.scss";
+
+.copyright {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  p {
+    font-size: $fs-very-base--mobile;
+  }
+  z-index: 99999;
+}
