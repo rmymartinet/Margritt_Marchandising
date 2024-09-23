@@ -1,30 +1,30 @@
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { priceReviewsData } from "../../data/data";
+import { awardsReviewsData } from "../../data/data";
 import useGSAPAnimation from "./useGSAPAnimation";
 
 export const PriceReviews = () => {
-  const priceReviewRef = useRef(null);
+  const awardsReviewRef = useRef(null);
 
   const priceReviewsDataRef = useRef(
-    priceReviewsData.map(() => React.createRef())
+    awardsReviewsData.map(() => React.createRef())
   );
   const { t } = useTranslation();
 
-  useGSAPAnimation(priceReviewsDataRef, priceReviewRef);
+  useGSAPAnimation(priceReviewsDataRef, awardsReviewRef);
 
   return (
-    <div ref={priceReviewRef} className="activity-container">
+    <div ref={awardsReviewRef} className="activity-container">
       <div className="infos-container">
         <div className="infos-grid">
           <div className="infos-title">
-            <h2>{t("project.projectPriceReviewsTitle")}</h2>
+            <h2>Awards and Press Reviews</h2>
           </div>
-          {priceReviewsData.map((expo, index) => (
+          {awardsReviewsData.map((expo, index) => (
             <div
               ref={priceReviewsDataRef.current[index]}
               className={`project${index} ${
-                index === priceReviewsData.length - 1 ? "last-project" : ""
+                index === awardsReviewsData.length - 1 ? "last-project" : ""
               }`}
               key={index}
             >

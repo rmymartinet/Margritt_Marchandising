@@ -1,26 +1,26 @@
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { expositionData } from "../../data/data";
+import { exhibitionData } from "../../data/data";
 import { useGSAPAnimation } from "./useGSAPAnimation";
 
 export const Exposition = () => {
-  const expositionRef = useRef(null);
+  const exhibitionRef = useRef(null);
 
-  const expositionDataRef = useRef(expositionData.map(() => React.createRef()));
+  const exhibitionDataRef = useRef(exhibitionData.map(() => React.createRef()));
   const { t } = useTranslation();
 
-  useGSAPAnimation(expositionDataRef, expositionRef);
+  useGSAPAnimation(exhibitionDataRef, exhibitionRef);
 
   return (
-    <div ref={expositionRef} className="exposition-container">
+    <div ref={exhibitionRef} className="exposition-container">
       <div className="infos-container">
         <div className="infos-grid">
           <div className="infos-title">
-            <h2>{t("project.projectExpositionTitle")}</h2>
+            <h2>Exhibitions</h2>
           </div>
-          {expositionData.map((expo, index) => (
+          {exhibitionData.map((expo, index) => (
             <div
-              ref={expositionDataRef.current[index]}
+              ref={exhibitionDataRef.current[index]}
               className={`project${index}`}
               key={index}
             >

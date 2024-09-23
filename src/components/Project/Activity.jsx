@@ -17,7 +17,7 @@ export const Activity = () => {
       <div className="infos-container">
         <div className="infos-grid">
           <div className="infos-title">
-            <h2>{t("project.projectActivityTitle")}</h2>
+            <h2>Art Activities</h2>
           </div>
           {activityData.map((expo, index) => (
             <div
