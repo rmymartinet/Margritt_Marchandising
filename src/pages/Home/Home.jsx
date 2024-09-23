@@ -20,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const infosOeuvresRefs = useRef([]);
   const oeuvresData = originauxData;
+  const videoRef = useRef(null);
 
   useEffect(() => {
     infosOeuvresRefs.current = infosOeuvresRefs.current.slice(
@@ -27,6 +28,15 @@ const Home = () => {
       oeuvresData.length
     );
   }, [oeuvresData.length]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Transition>
@@ -49,7 +59,14 @@ const Home = () => {
           </div>
           <div className="bic-video-container">
             <a href="https://www.instagram.com/p/C7xDlCzo2_P/">
-              <video loop autoPlay muted src={videoBic} />
+              <video
+                ref={videoRef}
+                loop
+                autoPlay
+                muted
+                playsInline
+                src={videoBic}
+              />
             </a>
           </div>
         </div>

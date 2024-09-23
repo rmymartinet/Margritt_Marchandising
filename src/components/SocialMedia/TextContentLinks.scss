@@ -1,11 +1,12 @@
 .follow-me-text {
   display: inline;
   font-size: 1em;
+  text-wrap: pretty;
 }
 
 .follow-me-text p {
   display: inline;
   margin: 0;
-  align-items: center;
+  text-align: center;
   gap: 10px;
 }
