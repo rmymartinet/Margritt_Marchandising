@@ -16,7 +16,7 @@ const About = () => {
   return (
     <Transition>
       <motion.section className="about-container" ref={containerRef}>
-        <Hero title={t("nav.about")} />
+        <Hero title="info" />
         <AboutContent ref={containerRef} />
         <Quote />
       </motion.section>

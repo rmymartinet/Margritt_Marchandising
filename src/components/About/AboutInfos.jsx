@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { forwardRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { about } from "../../data/dataImages";
-import { TextTransition } from "../Animations/TextAnimation";
 
 const AboutContent = forwardRef((_, ref) => {
   const { t } = useTranslation();
@@ -110,10 +109,11 @@ const AboutContent = forwardRef((_, ref) => {
 
   return (
     <div className="about-content" ref={ref}>
-      <TextTransition textClassName="about-title" />
       <div className="about-title">
         <p>
-          <span>Margritt Martinet</span> {t("about.subtitle")}
+          <span>Margritt Martinet</span> is a visual artist from Charente,
+          dedicated to her creations, providing a space for her creativity to
+          flourish
         </p>
       </div>
       <div ref={rightImg} className="right-img">
@@ -121,9 +121,23 @@ const AboutContent = forwardRef((_, ref) => {
       </div>
       <div className="left-content">
         <div className="left-text">
-          <div className="text-1">{t("about.text1")}</div>
-          <div className="text-2">{t("about.text2")}</div>
-          <div className="text-3">{t("about.text3")}</div>
+          <div className="text-1">
+            Trained in cabinetmaking at the École Boulle, she obtained a
+            bachelor’s degree in Fine Arts from the European School of Art in
+            Brittany and a diploma in art therapy from the Faculty of Medicine
+            in Poitiers.
+          </div>
+          <div className="text-2">
+            Passionate about fine arts, drawing, and painting, her artistic
+            universe, inspired by her travels and maritime family culture, is
+            characterized by an imaginary world in constant reconstruction,
+            emphasizing movement and visual effects
+          </div>
+          <div className="text-3">
+            Her artistic work transforms reality through the manipulation of
+            materials, blending instinct, creative impulse, and constant
+            exploration
+          </div>
         </div>
         <div ref={leftImg} className="left-img">
           <div className="left-wrapper">
