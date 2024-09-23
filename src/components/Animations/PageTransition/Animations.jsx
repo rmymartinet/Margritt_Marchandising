@@ -1,4 +1,4 @@
-import { Power1, Power3 } from "gsap";
+import { Power1, Power2, Power3 } from "gsap";
 
 export const childrenAnimation = {
   initial: {
@@ -7,13 +7,12 @@ export const childrenAnimation = {
   animate: {
     y: 0,
     transition: {
-      ease: Power3.easeInOut,
-      duration: 0.7,
+      ease: Power2.easeInOut,
+      duration: 0.8,
     },
   },
   exit: {
     y: 500,
-    opacity: 0,
     transition: {
       ease: Power1.easeInOut,
       duration: 1,
@@ -31,8 +30,8 @@ export const slideOutAnimation = {
   exit: {
     scaleY: 1,
     transition: {
-      duration: 0.7,
-      ease: Power3.easeinOut,
+      duration: 0.8,
+      ease: Power3.easeInOut,
     },
   },
 };
@@ -44,8 +43,8 @@ export const slideInAnimation = {
   animate: {
     scaleY: 0,
     transition: {
-      duration: 0.7,
-      ease: Power3.easeinOut,
+      duration: 0.8,
+      ease: Power3.easeInOut,
     },
   },
   exit: {
