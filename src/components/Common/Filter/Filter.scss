@@ -1,0 +1,76 @@
+@import "../../../sass/mixins.scss";
+@import "../../../sass/variables.scss";
+
+.filter-container {
+  margin-bottom: 5vh;
+
+  .filter-button {
+    margin-top: 3em;
+    display: flex;
+    font-size: $fs-base;
+    font-weight: 500;
+    padding-bottom: 1em;
+
+    .inprogress-button,
+    .gallery-button {
+      padding: 0 4em;
+      border-bottom: solid 1px #d9d9d9;
+      padding-bottom: 5px;
+      transition: border-bottom 0.5s ease;
+    }
+
+    .inprogress-button-active {
+      border-bottom: solid 1px black;
+      padding: 0 4em;
+      padding-bottom: 5px;
+    }
+
+    .gallery-button-active {
+      padding: 0 4em;
+      padding-bottom: 5px;
+      border-bottom: solid 1px black;
+    }
+
+    span {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 498px) {
+  .filter-container {
+    margin-top: 0vh;
+
+    .filter-button {
+      margin-top: 3em;
+      display: flex;
+      font-size: $fs-base;
+      font-weight: 500;
+      padding-bottom: 1em;
+
+      .inprogress-button,
+      .gallery-button {
+        padding: 0 3em;
+        border-bottom: solid 1px #d9d9d9;
+        padding-bottom: 5px;
+        transition: border-bottom 0.5s ease;
+      }
+
+      .inprogress-button-active {
+        border-bottom: solid 1px black;
+        padding: 0 3em;
+        padding-bottom: 5px;
+      }
+
+      .gallery-button-active {
+        padding: 0 3em;
+        padding-bottom: 5px;
+        border-bottom: solid 1px black;
+      }
+
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}

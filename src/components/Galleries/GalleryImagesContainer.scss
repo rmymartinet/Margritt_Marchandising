@@ -1,0 +1,63 @@
+@import "../../sass/mixins.scss";
+@import "../../sass/variables.scss";
+
+.gallery-grid-images-content {
+  width: 100%;
+
+  .gallery-img-gallery-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .gallery-images-container {
+      margin: auto;
+      width: 70%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .gallery-image-content {
+      padding-bottom: 10vh;
+
+      .gallery-infos-content {
+        display: flex;
+        justify-content: center;
+        .gallery-infos {
+          width: 70%;
+          font-size: $fs-base;
+          padding: 2em 4dvw;
+          gap: 3em;
+          display: flex;
+          gap: 1.2em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid-images-content {
+    .gallery-img-gallery-container {
+      .gallery-images-container {
+        width: 100%;
+      }
+
+      .gallery-image-content {
+        padding-bottom: 5vh;
+
+        .gallery-infos-content {
+          .gallery-infos {
+            width: 100%;
+            flex-wrap: wrap;
+          }
+        }
+      }
+    }
+  }
+}
