@@ -11,7 +11,6 @@ import {
 import Circle from "../../components/Common/Circle.jsx";
 import Form from "../../components/Form/Form.jsx";
 import SocialMedia from "../../components/SocialMedia/SocialMedia.jsx";
-import { originauxData } from "../../data/data";
 import "./Home.scss";
 
 gsap.registerPlugin(Flip);
@@ -19,15 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const infosOeuvresRefs = useRef([]);
-  const oeuvresData = originauxData;
   const videoRef = useRef(null);
-
-  useEffect(() => {
-    infosOeuvresRefs.current = infosOeuvresRefs.current.slice(
-      0,
-      oeuvresData.length
-    );
-  }, [oeuvresData.length]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -3,13 +3,6 @@ Images WEBP
 -------------- */
 
 /*------------
-Projects
--------------- */
-import project1 from "../assets/images/Project/p1.jpg";
-import project2 from "../assets/images/Project/p2.jpg";
-import project3 from "../assets/images/Project/p3.jpg";
-
-/*------------
 Gallery
 -------------- */
 import maxiBibulleLargeWebp from "../assets/images/Gallery/Desktop/Gallery/webp/maxi-bibulle.webp";
@@ -87,14 +80,6 @@ export const mecaniqueDesRevesOriginal = {
 export const maxiBibulleOriginal = {
   webp: {
     maxiBibulle: maxiBibulleLargeWebp,
-  },
-};
-
-export const projectData = {
-  p1: {
-    img1: project1,
-    img2: project2,
-    img3: project3,
   },
 };
 
