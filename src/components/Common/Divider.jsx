@@ -6,7 +6,7 @@ const Divider = ({ className }) => {
   useGSAP(() => {
     gsap.to(`.${className}`, {
       width: "100%",
-      duration: 2,
+      duration: 1.2,
       delay: 0,
       ease: "power3.inOut",
     });
