@@ -1,0 +1,31 @@
+@import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
+
+.refused-access {
+}
+
+.authorized-access {
+  margin: 20vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .filter-button-container {
+    display: flex;
+    gap: 20px;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    font-size: $fs-base;
+    margin-bottom: 20px;
+  }
+}

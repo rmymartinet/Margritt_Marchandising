@@ -1,0 +1,66 @@
+@import "../../../sass/variables.scss";
+@import "../../../sass/mixins.scss";
+
+.admin-panel {
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+  gap: 2em;
+
+  h2 {
+    color: red;
+    text-decoration: underline;
+  }
+  .admin-panel h1 {
+    font-size: $fs-base;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    width: 50%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container div {
+    margin-bottom: 15px;
+  }
+
+  .form-container label {
+    display: block;
+    font-weight: semibold;
+    margin-bottom: 5px;
+    color: black;
+  }
+
+  .form-container input,
+  .form-container select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .form-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+}
