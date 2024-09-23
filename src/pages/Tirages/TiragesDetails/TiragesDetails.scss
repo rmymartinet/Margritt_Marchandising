@@ -1,7 +1,7 @@
 @import "../../../sass/variables.scss";
 @import "../../../sass/mixins.scss";
 
-.orignaux-container {
+.details-container {
   margin-top: 20vh;
   padding: 0 5vw;
 
@@ -49,6 +49,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 0.5em;
 
         p {
           opacity: 0.4;
@@ -80,11 +81,23 @@
         margin-bottom: 5vh;
 
         .contact {
-          background: black;
           border-radius: 20px;
           padding: 5px 10px;
-          color: white;
+          border: solid blue 2px;
           cursor: pointer;
+          scale: 1;
+          transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+          &:hover {
+            background-color: blue;
+            color: white;
+            transition: background-color 0.2s ease-in-out,
+              color 0.2s ease-in-out;
+
+            a {
+              color: white;
+            }
+          }
         }
         .next-work {
           display: flex;
@@ -114,155 +127,124 @@
           }
         }
       }
+
+      .stock-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        align-self: end;
+        padding: 0 4vw;
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .price-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 4vw;
+        justify-content: space-around;
+
+        .price {
+          width: 100%;
+          display: flex;
+          font-weight: 500;
+          font-size: $fs-base;
+        }
+      }
     }
   }
 }
 
-.livraison {
-  display: flex;
-  width: 100%;
-  justify-content: center;
+@media (max-width: 1024px) {
+  .details-container {
+    margin-top: 10vh;
 
-  .table-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
+    .product-info {
+      display: flex;
+      gap: 10em;
+      flex-direction: column;
 
-  table {
-    border-collapse: collapse;
-  }
+      .content-left {
+        height: 40vh;
 
-  th,
-  td {
-    border: 1px solid #d3d3d3;
-    text-align: center;
-    padding: 10px;
-  }
+        ///A REVOIR
+        .arrow-left {
+          z-index: 10;
+          position: absolute;
+          top: 50%;
+          left: -4%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: black;
+        }
+        .arrow-right {
+          z-index: 10;
+          position: absolute;
+          top: 50%;
+          right: -4%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: black;
+        }
+      }
 
-  th {
-    border: 1px solid black;
+      .content-right {
+        gap: 3em;
 
-    background-color: #d3d3d3;
-    font-size: $fs-sm;
-    font-weight: 500;
-  }
+        .title {
+          h1 {
+            font-size: $fs-xl;
+          }
+          p {
+            text-align: center;
+          }
+        }
 
-  td {
-    background-color: #f9f9f9;
-    font-size: $fs-sm;
-  }
+        .details-infos {
+          font-size: $fs-md;
 
-  thead {
-    background-color: #e0e0e0;
-  }
-}
-
-@media (max-width: 768px) {
-  .originaux-details-container {
-    .infos-container {
-      .wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        padding: 0;
-        margin-bottom: 20vh;
-
-        .description {
-          row-gap: 10em;
-
-          .buying-text {
-            grid-column: 2/4;
-            font-size: $fs-md;
+          .serie,
+          .date,
+          .piece,
+          .format,
+          .paper {
             width: 100%;
           }
-          .details-infos {
-            grid-column: 2/4;
-            justify-self: center;
-
-            .serie,
-            .date,
-            .piece,
-            .format,
-            .paper {
-              span {
-                justify-self: flex-start;
-              }
-            }
-          }
-        }
-
-        .navigate {
-          grid-column: 1/4;
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          font-size: $fs-sm;
-
-          .navigate-works-originaux {
-            position: relative;
-
-            p {
-              font-size: $fs-xxxl;
-              width: max-content;
-              cursor: pointer;
-            }
-
-            img {
-              position: absolute;
-              width: 300px;
-              height: 300px;
-              object-fit: contain;
-              transform: translateX(-50%) translateY(-50%);
-              top: 50%;
-              left: 50%;
-              z-index: -10;
-              opacity: 0;
-              pointer-events: none;
-            }
-          }
         }
       }
     }
   }
 }
+@media (max-width: 768px) {
+  .details-container {
+    .product-info {
+      display: flex;
+      gap: 3em;
+      flex-direction: column;
 
-@media (max-width: 498px) {
-  .panel {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  .infos-container {
-    .description {
-      height: 70vh;
-      padding: 0 5vw;
-      column-gap: 0vw;
-
-      .buying-text {
-        gap: 1em;
-        grid-row: 3;
-        grid-column: span 2;
-        font-size: $fs-md;
-      }
-
-      .description-divider {
-        grid-row: 2;
-        grid-column: span 2;
-        height: 1px;
-        background-color: $matching-color1;
-        margin: 0vh 0;
-      }
-
-      .sale {
-        grid-row: 4;
-        padding: 0;
-        justify-self: flex-start;
-        grid-column: span 2;
+      .content-left {
+        ///A REVOIR
+        .arrow-left {
+          z-index: 10;
+          position: absolute;
+          top: 50%;
+          left: -4%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: black;
+        }
+        .arrow-right {
+          z-index: 10;
+          position: absolute;
+          top: 50%;
+          right: -4%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: black;
+        }
       }
     }
   }
-}
-
-@media (max-width: 350px) {
 }

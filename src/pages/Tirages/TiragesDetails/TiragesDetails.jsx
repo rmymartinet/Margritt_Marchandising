@@ -1,9 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Flip } from "gsap/Flip";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useMemo, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Flip, ScrollTrigger } from "gsap/all";
+import { useRef, useState } from "react";
 import {
   IoIosArrowBack,
   IoIosArrowForward,
@@ -13,63 +11,36 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Transition } from "../../../components/Animations/PageTransition/Transition.jsx";
 import Breadcrumb from "../../../components/Common/Breadcrumb/Breadcrumb.jsx";
 import InfoItem from "../../../components/Common/InfoItem.jsx";
-import { originauxData } from "../../../data/data.js";
+import QuantitySelector from "../../../components/Common/QuantitySelector/QuantitySelector.jsx";
+import { useFilteredData } from "../../../components/hook/useFilteredData.jsx";
+import { useShoppingIsClickedStore } from "../../../store/useShoppingIsClickedStore.jsx";
+import { useStoreShopping } from "../../../store/useStoreShopping.jsx";
 import "./TiragesDetails.scss";
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(Flip);
+gsap.registerPlugin(ScrollTrigger, Flip);
 
-/**
- * Renders the details of a specific artwork.
- *
- * @component
- * @returns {JSX.Element} The OriginauxDetails component
- */
 const TiragesDetails = () => {
-  const { t } = useTranslation();
-  const arrowRef = useRef(null);
-  const titleRef = useRef(null);
-  const { id, size } = useParams(); // Récupère id et size depuis l'URL
+  const { id, size } = useParams();
   const navigate = useNavigate();
 
-  // Filtre les œuvres selon la taille spécifiée
-  const tiragesFiltered = originauxData.filter((item) => {
-    return item.dimension === size;
-  });
+  const arrowRef = useRef(null);
+  const titleRef = useRef(null);
 
-  // Trouve l'œuvre sélectionnée par son id
-  const selectedImage = tiragesFiltered.find((item) => item.id === Number(id));
-
-  const currentIndex = tiragesFiltered.findIndex(
-    (item) => item.id === Number(id)
-  );
-
-  if (!selectedImage || currentIndex === -1) {
-    return <div>Œuvre non trouvée</div>;
-  }
-
-  const nextIndex = (currentIndex + 1) % tiragesFiltered.length;
-  const nextItem = tiragesFiltered[nextIndex];
+  const [tempQuantity, setTempQuantity] = useState(1);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
-  // Créer un tableau des images associées à l'œuvre sélectionnée
-  const pictures = [
-    { src: selectedImage.imgWebp },
-    { src: selectedImage.img1 },
-    { src: selectedImage.img2 },
-    { src: selectedImage.img3 },
-    { src: selectedImage.img4 },
-  ].filter((picture) => picture.src); // Filtrer les images non définies
+  const cart = useStoreShopping((state) => state.cart);
+  const addToCart = useStoreShopping((state) => state.addToCart);
+  const setIsClicked = useShoppingIsClickedStore((state) => state.setIsClicked);
 
-  const allImages = useMemo(() => {
-    return Object.keys(selectedImage).filter((key) => key.includes("img"));
-  }, [selectedImage]);
+  const pricing = {
+    moyen: 250,
+    grand: 600,
+  };
 
-  /*---------------
-  Navigate to next item
-  ---------------- */
-  const handleNavigateNextOriginaux = (nextId) => {
-    navigate(`/originaux/${size}/${nextId}`); // Conserve `size` dans l'URL
+  const finalePrice = {
+    moyen: tempQuantity * pricing.moyen, // Utiliser tempQuantity ici
+    grand: tempQuantity * pricing.grand,
   };
 
   useGSAP(() => {
@@ -84,70 +55,143 @@ const TiragesDetails = () => {
     });
   });
 
-  /*---------------
-  Carousel images
-  ----------------*/
-  const handleNextSLide = () => {
-    setCarouselIndex((prevIndex) => (prevIndex + 1) % pictures.length);
-  };
-
-  const handlePrevSLide = () => {
-    setCarouselIndex((prevIndex) =>
-      prevIndex === 0 ? pictures.length - 1 : prevIndex - 1
+  // Navigation pour le carrousel
+  const handleNextSlide = () => {
+    setCarouselIndex(
+      (prevIndex) => (prevIndex + 1) % selectedItem.imageUrls.length
     );
   };
 
-  /*---------------
-  Animate arrow hover
-  ----------------*/
+  const handlePrevSlide = () => {
+    setCarouselIndex((prevIndex) =>
+      prevIndex === 0 ? selectedItem.imageUrls.length - 1 : prevIndex - 1
+    );
+  };
 
   const handleEnterHovered = () => {
     const tl = gsap.timeline();
-    tl.to(arrowRef.current, {
-      x: 100,
-      duration: 0.3,
-      ease: "power3.inOut",
-    });
-    tl.set(arrowRef.current, {
-      x: -100,
-    });
-    tl.to(arrowRef.current, {
-      x: 0,
-      duration: 0.5,
-      ease: "power3.inOut",
-    });
+    tl.to(arrowRef.current, { x: 100, duration: 0.3, ease: "power3.inOut" })
+      .set(arrowRef.current, { x: -100 })
+      .to(arrowRef.current, { x: 0, duration: 0.5, ease: "power3.inOut" });
   };
+
+  const handleAddToCart = () => {
+    const numericQuantity = Number(tempQuantity); // Utiliser tempQuantity
+    if (isNaN(numericQuantity) || numericQuantity <= 0) {
+      console.error("Invalid quantity:", tempQuantity);
+      return;
+    }
+
+    addToCart({
+      id: selectedItem.id,
+      title: selectedItem.title,
+      price: size === "large-formats" ? pricing.grand : pricing.moyen,
+      quantity: numericQuantity,
+      img: selectedItem.imageUrls[0],
+      format: size,
+      stock: selectedItem.stock,
+    });
+    setIsClicked(true);
+    setTempQuantity(1);
+  };
+
+  const handleAddQuantity = () => {
+    if (maxValue || isActualQuantityGreaterThanStock) {
+      alert("You have reached the maximum quantity available in stock.");
+    } else if (tempQuantity < maxQuantity) {
+      setTempQuantity((prevQuantity) => prevQuantity + 1);
+    }
+  };
+
+  const handleRemoveQuantity = () => {
+    if (tempQuantity > 1) {
+      setTempQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const { data, error, loading } = useFilteredData(size);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) {
+    console.error(error);
+    return <p>Error loading data</p>;
+  }
+  const selectedItem = data.find((item) => item.id === id);
+  const maxQuantity = selectedItem.stock;
+
+  if (!selectedItem) {
+    console.error("Item with the specified id was not found.");
+    return;
+  }
+
+  // Trouve l'index de l'élément sélectionné
+  const selectedIndex = data.findIndex((item) => item.id === id);
+
+  // Vérifie si l'index est valide
+  if (selectedIndex === -1) {
+    console.error("Invalid selectedIndex. Item not found.");
+    return;
+  }
+
+  // Calcule l'index suivant avec le modulo pour boucler
+  const nextIndex = (selectedIndex + 1) % data.length;
+
+  // Sélectionne l'élément suivant avec vérification
+  const nextItem = data[nextIndex];
+
+  if (!nextItem) {
+    console.error("Next item is undefined.");
+    return;
+  }
+
+  const handleNavigateNextOriginaux = () => {
+    navigate(`/prints/${size}/${nextItem.id}`);
+  };
+
+  const isActualQuantityGreaterThanStock =
+    cart?.find((item) => item?.id === selectedItem.id)?.quantity >=
+      (selectedItem?.stock || 0) || false;
+
+  //savoir combien j'ai choisi de quantité
+  const totalQuantityOfItem = cart.reduce(
+    (total, item) =>
+      selectedItem.id === item.id ? total + item.quantity : total,
+    0
+  );
+  const totalStock = Number(selectedItem.stock);
+  const totalQuantity = totalQuantityOfItem + Number(tempQuantity);
+  const maxValue = totalQuantity > totalStock;
 
   return (
     <Transition>
-      <div className="orignaux-container">
+      <div className="details-container">
         <Breadcrumb />
         <div className="product-info">
           <div className="content-left">
-            {allImages.length > 2
-              ? pictures.map((picture, index) => (
-                  <div key={index} className="side-img">
-                    <img
-                      loading="lazy"
-                      src={pictures[carouselIndex].src}
-                      alt="image"
-                      placeholder="blur"
-                    />
-                  </div>
-                ))
-              : pictures.slice(0, 1).map(({ src }, index) => (
-                  <div key={index}>
-                    <div>
-                      <img src={src} alt="image" placeholder="blur" />
-                    </div>
-                  </div>
-                ))}
-            {allImages.length > 2 && (
+            {selectedItem.imageUrls.length > 2 ? (
+              <div className="side-img">
+                <img
+                  loading="lazy"
+                  src={selectedItem.imageUrls[carouselIndex]}
+                  alt="image"
+                  placeholder="blur"
+                />
+              </div>
+            ) : (
+              <div>
+                <img
+                  src={selectedItem.imageUrls}
+                  alt="image"
+                  placeholder="blur"
+                />
+              </div>
+            )}
+            {selectedItem.imageUrls.length > 2 && (
               <>
-                <div className="arrow-left" onClick={handlePrevSLide}>
+                <div className="arrow-left" onClick={handlePrevSlide}>
                   <IoIosArrowBack size={40} />
                 </div>
-                <div className="arrow-right" onClick={handleNextSLide}>
+                <div className="arrow-right" onClick={handleNextSlide}>
                   <IoIosArrowForward size={40} />
                 </div>
               </>
@@ -156,72 +200,94 @@ const TiragesDetails = () => {
           <div className="content-right">
             <div className="title">
               <h1>
-                Série {selectedImage.serie} - {selectedImage.title}
+                Series {selectedItem.serie} - {selectedItem.title}
               </h1>
               <p>
-                Indisponible à la vente via le site. Me contacter pour en
-                discuter.
+                Not available for sale via the website. Contact me to discuss.
               </p>
             </div>
             <div className="details-infos">
               <InfoItem
-                label="Serie"
-                value={selectedImage.serie}
+                label="Series"
+                value={selectedItem.serie}
                 className="serie"
               />
               <InfoItem
-                label="Année"
-                value={selectedImage.date}
+                label="Year"
+                value={selectedItem.date}
                 className="date"
               />
               <InfoItem
-                label={t("originauxDetails.piece")}
-                value={selectedImage.piece}
+                label="Piece"
+                value={selectedItem.piece}
                 className="piece"
               />
               <InfoItem
                 label="Format"
-                value={selectedImage.format}
+                value={selectedItem.format}
                 className="format"
               />
               <InfoItem
-                label={t("originauxDetails.paper")}
-                value={selectedImage.papier}
+                label="Paper"
+                value={selectedItem.papier}
                 className="paper"
               />
             </div>
-            {/* 
-            <div className="livraison">
-              <div className="table-container">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Livraison</th>
-                      <th>France</th>
-                      <th>Europe</th>
-                      <th>International</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td>5 à 10 jours</td>
-                      <td>2 à 3 semaines</td>
-                      <td>3 à 4 semaines</td>
-                    </tr>
-                  </tbody>
-                </table>
+
+            <div className="stock-content">
+              {parseInt(selectedItem.stock) === 0 ? (
+                <p>Out of stock</p>
+              ) : (
+                <>
+                  <p>Stock available :</p>
+                  <span>
+                    {selectedItem.stock}{" "}
+                    {parseInt(selectedItem.stock) > 1 ? "pieces" : "piece"}
+                  </span>
+                </>
+              )}
+            </div>
+            <div className="price-container">
+              <div className="price">
+                {isActualQuantityGreaterThanStock ? (
+                  <>
+                    <span>
+                      Price: {size === "large-formats" ? 600 : 250}
+                      ,00 €
+                    </span>
+                  </>
+                ) : (
+                  <span>
+                    Price:{" "}
+                    {size === "large-formats"
+                      ? finalePrice["grand"]
+                      : finalePrice["moyen"]}
+                    ,00 €
+                  </span>
+                )}
               </div>
-            </div> */}
+              <QuantitySelector
+                quantity={tempQuantity}
+                onAdd={handleAddQuantity}
+                onRemove={handleRemoveQuantity}
+                maxQuantity={selectedItem.stock}
+                isActualQuantityGreaterThanStock={
+                  isActualQuantityGreaterThanStock
+                }
+                maxValue={maxValue}
+              />
+            </div>
             <div className="buy-container">
-              <span className="contact">Acheter</span>
+              <span className="contact" onClick={handleAddToCart}>
+                Add to Cart
+              </span>
               <div
                 className="next-work"
                 onMouseEnter={() => handleEnterHovered()}
                 onMouseLeave={() => handleEnterHovered()}
                 onClick={() => handleNavigateNextOriginaux(nextItem.id)}
               >
-                <span>Suivant</span>
+                <span>Next</span>
                 <div className="icon-container">
                   <div className="icon" ref={arrowRef}>
                     <IoIosArrowRoundForward />
