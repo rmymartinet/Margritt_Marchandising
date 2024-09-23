@@ -2,37 +2,57 @@ import { motion } from "framer-motion";
 import { IoIosArrowForward, IoIosResize } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { Transition } from "../../components/Animations/PageTransition/Transition";
+import Circle from "../../components/Common/Circle";
 import Hero from "../../components/Common/Hero/Hero";
+import Form from "../../components/Form/Form";
 import HeroSubContent from "../../components/Hero/HeroSubContent";
-import { originauxData } from "../../data/data";
+import { useFilteredData } from "../../components/hook/useFilteredData";
+import { useShoppingIsClickedStore } from "../../store/useShoppingIsClickedStore";
+import { useStoreShopping } from "../../store/useStoreShopping";
 import "./Tirages.scss";
 
 const TiragesMoyens = () => {
-  const tirages = originauxData.filter((item) => {
-    return item.dimension === "moyens-formats";
-  });
-
   let navigate = useNavigate();
-  const handleNavigate = (id) => {
-    navigate(`/tirages/moyens-formats/${id}`);
+
+  const handleNavigateToDetails = (id) => {
+    navigate(`/prints/medium-formats/${id}`);
   };
+
+  const addToCart = useStoreShopping((state) => state.addToCart);
+  const setIsClicked = useShoppingIsClickedStore((state) => state.setIsClicked);
+
+  const handleAddToCart = (item) => {
+    addToCart({
+      id: item.id,
+      title: item.title,
+      price: 250,
+      quantity: 1,
+      stock: item.stock,
+      img: item.imageUrls[0],
+      format: "medium-formats",
+    });
+  };
+
+  const { data } = useFilteredData("medium-formats");
 
   return (
     <Transition>
-      <div className="galerie-container">
-        <Hero title="tirages grand format" className="hero-subtitle" />
+      <div className="tirages-container">
+        <Hero title="medium formats prints" className="hero-subtitle" />
         <HeroSubContent>
           <div className="top-content">
-            <div className="mail-container">
-              <span>Disponible à la vente via le site</span>
-            </div>
             <div className="content-right">
               <p>
-                Les tirages sont des reproductions numériques de haute qualité
-                de mes œuvres originales. Chaque tirage est en édition limitée,
-                numéroté, signé par l'artiste et accompagné d'un certificat
-                d'authenticité. Les tirages sont en édition limitée et réalisés
-                par Les 'Courts Tirages'.
+                The prints are high-quality digital reproductions of my original
+                artworks. Each print is a limited edition, numbered, signed by
+                the artist, and accompanied by a certificate of authenticity.
+                The prints are produced by Les ‘Courts Tirages’.
+              </p>
+            </div>
+            <div className="content-left">
+              <p>
+                Each print is limited to 30 copies. Check their availability by
+                consulting the prints.
               </p>
             </div>
           </div>
@@ -41,13 +61,13 @@ const TiragesMoyens = () => {
               <div className="icon">
                 <IoIosResize />
               </div>
-              <p>Taille 50 x 70 cm</p>
+              <p> Size 50 x 70 cm</p>
             </div>
           </div>
         </HeroSubContent>
         <motion.div className="grid-images-content" exit="exit">
           <div className="img-gallery-container">
-            {tirages.map((imgData, id) => {
+            {data.map((imgData, id) => {
               return (
                 <motion.div
                   key={id}
@@ -62,21 +82,21 @@ const TiragesMoyens = () => {
                 >
                   <div
                     onClick={() => {
-                      handleNavigate(imgData.id, imgData.format);
+                      handleNavigateToDetails(imgData.id, imgData.format);
                     }}
                     className="images-container"
                   >
                     <picture>
-                      <source type="image/webp" srcSet={imgData.imgWebp} />
+                      <source type="image/webp" srcSet={imgData.imageUrls[0]} />
                       <img
                         loading="lazy"
                         className="img"
                         alt={imgData.alt}
-                        src={imgData.imgJpg}
+                        src={imgData.imageUrls[0]}
                       />
                     </picture>
                   </div>
-                  <div className="image-content">
+                  <div className="image-content-tirages">
                     <div className="infos-content">
                       <div className="infos">
                         <p>{imgData.title}</p>
@@ -86,18 +106,30 @@ const TiragesMoyens = () => {
                         <p> {imgData.date}</p>
                       </div>
                       <div className="price">
-                        <span>Prix : 250 euros</span>
+                        <span>Price: 250.00 €</span>
                       </div>
                     </div>
                     <div className="button-container">
-                      <div className="infos-button-container">
-                        <span className="infos-button">En savoir plus</span>
+                      <div
+                        onClick={() => {
+                          handleNavigateToDetails(imgData.id);
+                        }}
+                        className="infos-button-container"
+                      >
+                        <span className="infos-button">Learn more</span>
                         <div className="icon">
                           <IoIosArrowForward />
                         </div>
                       </div>
                       <div className="buy-button">
-                        <p>Acheter</p>
+                        <p
+                          onClick={() => {
+                            handleAddToCart(imgData);
+                            setIsClicked(true);
+                          }}
+                        >
+                          Add to cart
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -107,6 +139,10 @@ const TiragesMoyens = () => {
           </div>
         </motion.div>
       </div>
+      <footer>
+        <Circle target={"gallery-container"} />
+        <Form />
+      </footer>
     </Transition>
   );
 };
