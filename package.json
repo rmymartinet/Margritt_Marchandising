@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.9.0",
     "@gsap/react": "^2.1.1",
     "@prisma/client": "^5.19.1",
     "@stripe/react-stripe-js": "^2.8.0",
@@ -20,11 +21,14 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
     "framer-motion": "^10.18.0",
     "gsap": "^3.12.5",
+    "helmet": "^7.1.0",
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",
+    "joi": "^17.13.3",
     "locomotive-scroll": "^5.0.0-beta.11",
     "mongodb": "^6.8.1",
     "qs": "^6.13.0",
