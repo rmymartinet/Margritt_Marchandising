@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import "../../sass/circle.scss";
+import Copyright from "./Copyright/Copyright";
 
 const Circle = ({ target }) => {
   const { scrollYProgress } = useScroll({
@@ -12,6 +13,7 @@ const Circle = ({ target }) => {
     <div className="main-circle">
       <motion.div style={{ height }} className="circle-container">
         <div className="circle"></div>
+        <Copyright />
       </motion.div>
     </div>
   );
