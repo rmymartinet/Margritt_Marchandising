@@ -4,7 +4,7 @@ import MobileNav from "../MobileNav/MobileNav.jsx";
 import Nav from "../Nav.jsx";
 import "./Navbar.scss";
 
-const MOBILE_WIDTH = 498;
+const DESKTOP_DEVISE = 1023;
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -15,7 +15,7 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    setIsMobile(dimension.width < MOBILE_WIDTH);
+    setIsMobile(dimension.width < DESKTOP_DEVISE);
   }, [dimension.width]);
 
   return (
