@@ -1,6 +1,17 @@
+import { useEffect, useRef } from "react";
 import "./Iphone.scss";
 
 const Iphone = ({ videoUrl }) => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <section className="iphone-container">
       <div className="iphone-frame">
@@ -16,7 +27,14 @@ const Iphone = ({ videoUrl }) => {
 
         <div className="iphone-screen">
           <div className="video-content">
-            <video autoPlay muted loop src={videoUrl}></video>
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              src={videoUrl}
+            ></video>
           </div>
           {/* Camera */}
           <div className="camera">
