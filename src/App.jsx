@@ -1,23 +1,35 @@
-"use client";
-
+// App.jsx
+import {
+  ClerkProvider,
+  RedirectToSignIn,
+  SignedIn,
+  useUser,
+} from "@clerk/clerk-react";
 import { AnimatePresence } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Landing from "./components/Loading/Landing.jsx";
 import NavBar from "./components/Nav/NavBar/NavBar.jsx";
+import Shopping from "./components/ShoppingComponent/Shopping.jsx";
 import About from "./pages/About/About.jsx";
+import Admin from "./pages/Admin/Admin.jsx";
+import Checkout from "./pages/Checkout/Checkout.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
-import Gallery from "./pages/Galleries/Galleries.jsx";
+import Exhibitions from "./pages/Exhibitions/Exhibition.jsx";
+import Gallery from "./pages/Gallery/Gallery.jsx";
 import Home from "./pages/Home/Home.jsx";
 import OriginauxGrands from "./pages/Originaux/OrginauxGrand.jsx";
 import OriginauxDetails from "./pages/Originaux/OriginauxDetails/OriginauxDetails.jsx";
 import OriginauxMoyens from "./pages/Originaux/OriginauxMoyen.jsx";
+import PaymentCancel from "./pages/PaymentCancel/PaymentCancel.jsx";
+import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess.jsx";
 import TiragesDetails from "./pages/Tirages/TiragesDetails/TiragesDetails.jsx";
 import TiragesGrands from "./pages/Tirages/TiragesGrands.jsx";
 import TiragesMoyens from "./pages/Tirages/TiragesMoyens.jsx";
 import useCountStore from "./store/useCountStore.jsx";
-import "./styles/locomotive.css";
 
 function App() {
   const { t } = useTranslation();
@@ -28,25 +40,6 @@ function App() {
   const location = useLocation();
 
   const isRender = useCountStore((state) => state.isRender);
-
-  useEffect(() => {
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll({
-        el: document.querySelector("#root"),
-        smooth: true,
-      });
-    })();
-  }, []);
-
-  const scrollToTop = useCallback(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(scrollToTop, 1000);
-    return () => clearTimeout(timer);
-  }, [location, scrollToTop]);
 
   useEffect(() => {
     document.title = "Margritt.com";
@@ -105,67 +98,107 @@ function App() {
     }
   }, [isRender]);
 
+  const scrollRef = useRef(null);
+  const locomotiveScrollInstanceRef = useRef(null);
+
+  useEffect(() => {
+    locomotiveScrollInstanceRef.current = new LocomotiveScroll({
+      el: scrollRef.current,
+      smooth: true,
+      getDirection: true,
+    });
+
+    return () => {
+      locomotiveScrollInstanceRef.current.destroy();
+    };
+  }, []);
+
+  const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
   return (
     <>
       {showLanding && <Landing />}
       {!showLanding && (
-        <AnimatePresence initial={false} mode="wait">
-          <NavBar />
-          <Routes location={location} key={location.pathname}>
-            <Route
-              path="/"
-              index
-              element={<Home isVisited={isVisited} data-scroll />}
-            />
-            <Route
-              path={`/${t("nav.galleries")}`}
-              element={<Gallery data-scroll />}
-            />
-            <Route
-              path={`/originaux/${t("nav.grandsFormats")
-                .toLocaleLowerCase()
-                .replace(/ /g, "-")}`}
-              element={<OriginauxGrands data-scroll />}
-            />
-            <Route
-              path={`/originaux/${t("nav.moyensFormats")
-                .toLocaleLowerCase()
-                .replace(/ /g, "-")}`}
-              element={<OriginauxMoyens data-scroll />}
-            />
-            <Route
-              path="/originaux/:size/:id"
-              element={<OriginauxDetails data-scroll />}
-            />
-            <Route
-              path={`/tirages/${t("nav.grandsFormats")
-                .toLocaleLowerCase()
-                .replace(/ /g, "-")}`}
-              element={<TiragesGrands data-scroll />}
-            />
-            <Route
-              path={`/tirages/${t("nav.moyensFormats")
-                .toLocaleLowerCase()
-                .replace(/ /g, "-")}`}
-              element={<TiragesMoyens data-scroll />}
-            />
-            <Route
-              path="/tirages/:size/:id"
-              element={<TiragesDetails data-scroll />}
-            />
-            <Route
-              path={`/${t("nav.about")}`}
-              element={<About data-scroll />}
-            />
-            <Route
-              path={`/${t("nav.contact")}`}
-              element={<Contact data-scroll />}
-            />
-          </Routes>
-        </AnimatePresence>
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+          <div ref={scrollRef}>
+            <AnimatePresence initial={false} mode="wait">
+              {location.pathname !== "/payment-success" &&
+                location.pathname !== "/payment-cancel" && <NavBar />}
+              <Routes location={location} key={location.pathname}>
+                <Route
+                  path="/"
+                  index
+                  element={<Home isVisited={isVisited} data-scroll />}
+                />
+                <Route path="/gallery" element={<Gallery data-scroll />} />
+                <Route
+                  path={`/originals/large-formats`}
+                  element={<OriginauxGrands data-scroll />}
+                />
+                <Route
+                  path={`/originals/medium-formats`}
+                  element={<OriginauxMoyens data-scroll />}
+                />
+                <Route
+                  path="/originals/:size/:id"
+                  element={<OriginauxDetails data-scroll />}
+                />
+                <Route
+                  path={`/prints/large-formats`}
+                  element={<TiragesGrands data-scroll />}
+                />
+                <Route
+                  path={`/prints/medium-formats`}
+                  element={<TiragesMoyens data-scroll />}
+                />
+                <Route
+                  path="/prints/:size/:id"
+                  element={<TiragesDetails data-scroll />}
+                />
+                <Route
+                  path="/exhibitions"
+                  element={<Exhibitions data-scroll />}
+                />
+                <Route path="/info" element={<About data-scroll />} />
+                <Route
+                  path={`/${t("nav.contact")}`}
+                  element={<Contact data-scroll />}
+                />
+                <Route
+                  path="/payment-success"
+                  element={<PaymentSuccess data-scroll />}
+                />
+                <Route
+                  path="/payment-cancel"
+                  element={<PaymentCancel data-scroll />}
+                />
+                <Route path="/checkout" element={<Checkout data-scroll />} />
+                <Route path="/sign-in" element={<RedirectToSignIn />} />
+                <Route
+                  path="/admin"
+                  element={
+                    <SignedIn>
+                      <AdminComponent />
+                    </SignedIn>
+                  }
+                />
+              </Routes>
+            </AnimatePresence>
+            <Shopping locomotiveScroll={locomotiveScrollInstanceRef.current} />
+          </div>
+        </ClerkProvider>
       )}
     </>
   );
+}
+
+function AdminComponent() {
+  const { user } = useUser();
+  if (!user) return <div>Loading...</div>;
+  if (user.publicMetadata?.role !== "admin") {
+    return <div>Accès refusé. Vous n'êtes pas administrateur.</div>;
+  }
+  return <Admin />;
 }
 
 export default App;
