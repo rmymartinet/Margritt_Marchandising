@@ -1,5 +1,7 @@
 [build]
-  builder = "nodejs"
+builder = "nodejs"
+install_cmd = "npm install"
+build_cmd = "npm run build"
 
 [run]
-  command = "npm start"
+command = "npm start"
