@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { forwardRef, useRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { about } from "../../data/dataImages";
 

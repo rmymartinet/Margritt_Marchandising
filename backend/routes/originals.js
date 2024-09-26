@@ -1,8 +1,8 @@
 // routes/originals.js
 import { Router } from "express";
 import {
-  getAllOriginals,
   addOriginal,
+  getAllOriginals,
 } from "../controllers/originalsController.js";
 
 const router = Router();

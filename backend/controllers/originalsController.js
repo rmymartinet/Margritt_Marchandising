@@ -37,8 +37,11 @@ const originalSchema = Joi.object({
 export const getAllOriginals = async (req, res) => {
   try {
     const items = await prisma.originals.findMany();
+
+    console.log(items);
     res.json(items);
   } catch (error) {
+    console.error("Erreur lors de la récupération des originaux :", error);
     res.status(500).send("Une erreur est survenue.");
   }
 };

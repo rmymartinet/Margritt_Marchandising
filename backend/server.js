@@ -1,5 +1,5 @@
-import cors from "cors";
 import "dotenv/config";
+import cors from "cors";
 import express from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";

@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import SplitType from "split-type";
 
 export const TextTransition = ({
