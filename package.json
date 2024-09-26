@@ -10,7 +10,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "generate": "cd backend && npx prisma generate"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.9.0",
