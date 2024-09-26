@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import React from "react";
 
 const Divider = ({ className }) => {
   useGSAP(() => {

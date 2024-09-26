@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./GalleryImagesContainer.scss";
 
 const GalleryImagesContainer = ({ item, isCursorPointer }) => {

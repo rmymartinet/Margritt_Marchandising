@@ -1,8 +1,10 @@
+import React from "react";
 import { Transition } from "../../components/Animations/PageTransition/Transition";
 import Circle from "../../components/Common/Circle";
 import Hero from "../../components/Common/Hero/Hero";
 import Form from "../../components/Form/Form";
 import Projects from "../Projects/Projects";
+
 import "./Exhibition.scss";
 
 const Exhibitions = () => {

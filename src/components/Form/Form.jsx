@@ -1,5 +1,5 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { CONTACT_INFO } from "../../data/dataContactInfos";
 import Divider from "../Common/Divider";
 import InfoItem from "../Common/InfoItem";

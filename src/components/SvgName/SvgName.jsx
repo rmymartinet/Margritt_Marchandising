@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import { useInView } from "framer-motion";
 import gsap from "gsap";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 export default function SvgName({ textColor }) {
   const mRef = useRef(null);

@@ -1,8 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
-
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useShoppingIsClickedStore } from "../../store/useShoppingIsClickedStore";
 import { useStoreShopping } from "../../store/useStoreShopping";

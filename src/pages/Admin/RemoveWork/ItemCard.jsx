@@ -1,3 +1,5 @@
+import React from "react";
+
 const ItemCard = ({ item, onRemove }) => {
   return (
     <div className="item-card">

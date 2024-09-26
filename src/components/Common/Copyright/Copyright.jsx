@@ -1,3 +1,4 @@
+import React from "react";
 import "./Copyright.scss";
 
 const Copyright = () => {

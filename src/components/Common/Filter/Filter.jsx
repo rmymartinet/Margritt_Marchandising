@@ -1,3 +1,4 @@
+import React from "react";
 import "./Filter.scss";
 
 const Filter = ({ setItems, active, setActive }) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Transition } from "../../components/Animations/PageTransition/Transition";
 import QuantitySelector from "../../components/Common/QuantitySelector/QuantitySelector";
 import { useStoreShopping } from "../../store/useStoreShopping";

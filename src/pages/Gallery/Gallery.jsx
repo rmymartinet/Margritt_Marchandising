@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoIosResize } from "react-icons/io";
 import { Transition } from "../../components/Animations/PageTransition/Transition.jsx";
 import Circle from "../../components/Common/Circle.jsx";

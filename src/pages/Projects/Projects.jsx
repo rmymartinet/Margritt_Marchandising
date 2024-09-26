@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
-
+import React, { useRef } from "react";
 import { Activity } from "../../components/Project/Activity.jsx";
 import { Exposition } from "../../components/Project/Exposition.jsx";
 import { PriceReviews } from "../../components/Project/PriceReview.jsx";

@@ -1,3 +1,4 @@
+import React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
 import videoInstagramScroll from "../../assets/videos/instagram_scroll.mp4";

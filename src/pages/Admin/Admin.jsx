@@ -1,5 +1,5 @@
 import { useUser } from "@clerk/clerk-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import AddArtworkPanel from "./AddWork/AddArtworkPanel";
 import "./Admin.scss";
 import RemoveWorkPanel from "./RemoveWork/RemoveWorkPanel";

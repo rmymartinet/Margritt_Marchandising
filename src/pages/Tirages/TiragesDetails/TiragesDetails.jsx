@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Flip, ScrollTrigger } from "gsap/all";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   IoIosArrowBack,
   IoIosArrowForward,

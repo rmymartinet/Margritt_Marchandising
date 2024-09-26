@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import React from "react";
 import { IoIosArrowForward, IoIosResize } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { Transition } from "../../components/Animations/PageTransition/Transition";

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "./InProgressImagesContainer.scss";
 

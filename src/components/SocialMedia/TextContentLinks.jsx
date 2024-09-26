@@ -1,3 +1,4 @@
+import React from "react";
 import { InstagramButton, TiktokButton } from "./SocialButton";
 import "./TextContentLinks.scss";
 

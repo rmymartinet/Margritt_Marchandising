@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import AboutContent from "../../components/About/AboutInfos.jsx";
 import Quote from "../../components/About/Quote/Quote.jsx";

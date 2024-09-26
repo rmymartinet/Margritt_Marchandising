@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 import "../../sass/circle.scss";
 import Copyright from "./Copyright/Copyright";
 

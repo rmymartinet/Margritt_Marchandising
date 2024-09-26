@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import videoBic from "../../assets/videos/bicVideo.mp4";
 import { Transition } from "../../components/Animations/PageTransition/Transition.jsx";
 import {

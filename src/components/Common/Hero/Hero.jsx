@@ -1,3 +1,4 @@
+import React from "react";
 import { TitleTransition } from "../../Animations/TextAnimation";
 import Divider from "../Divider";
 import "./Hero.scss";

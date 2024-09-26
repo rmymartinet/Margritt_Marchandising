@@ -1,3 +1,4 @@
+import React from "react";
 import "./HeroSubContent.scss";
 
 const HeroSubContent = ({ children }) => {

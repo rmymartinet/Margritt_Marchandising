@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useWindow from "../../Common/UseWindows.jsx";
 import MobileNav from "../MobileNav/MobileNav.jsx";
 import Nav from "../Nav.jsx";

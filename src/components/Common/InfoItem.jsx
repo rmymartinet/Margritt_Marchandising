@@ -1,3 +1,5 @@
+import React from "react";
+
 const InfoItem = ({ label, value, className }) => {
   return (
     <div className={className}>

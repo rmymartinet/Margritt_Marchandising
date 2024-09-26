@@ -1,3 +1,4 @@
+import React from "react";
 import ShadowText from "./ShadowText";
 
 const ArtistProfiles = () => {
