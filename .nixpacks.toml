@@ -1,7 +1,4 @@
 [build]
 builder = "nodejs"
 install_cmd = "npm install"
-build_cmd = "npm run build"
-
-[run]
-command = "npm start"
+build_cmd = "npx prisma generate && npm run build"
