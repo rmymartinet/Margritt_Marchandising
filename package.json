@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
     "start": "node server.mjs",
+    "start:both": "concurrently \"npm run start\" \"npm run dev\"",
     "generate": "npx prisma generate"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.4.0",
     "axios": "^1.7.7",
+    "concurrently": "^9.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
