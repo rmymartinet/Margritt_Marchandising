@@ -4,7 +4,7 @@ import express from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import stripeLib from "stripe";
-import originalsRoutes from "./routes/originals.js";
+import originalsRoutes from "./routes/originals.mjs";
 
 const stripe = stripeLib(process.env.STRIPE_SECRET_KEY);
 const app = express();

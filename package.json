@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "start": "server.js",
+    "start": "node server.js",
     "generate": "npx prisma generate"
   },
   "dependencies": {

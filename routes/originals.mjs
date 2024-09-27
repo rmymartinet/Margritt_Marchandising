@@ -3,7 +3,7 @@ import { Router } from "express";
 import {
   addOriginal,
   getAllOriginals,
-} from "../controllers/originalsController.js";
+} from "../controllers/originalsController.mjs";
 
 const router = Router();
 
